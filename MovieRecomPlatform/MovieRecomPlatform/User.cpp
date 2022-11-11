@@ -22,4 +22,19 @@ std::string User::GetPassword()
 	return this->m_password;
 }
 
+void User::SetUserId(int userId)
+{
+	this->m_userId = userId;
+}
+
+void User::SetUsername(std::string userName)
+{
+	this->m_username = userName;
+}
+
+void User::SetPassword(std::string passWord)
+{
+	this->m_password = passWord;
+}
+
 
