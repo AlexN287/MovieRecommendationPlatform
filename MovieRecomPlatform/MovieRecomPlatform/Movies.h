@@ -14,5 +14,11 @@ private:
 	std::string m_country;
 	uint8_t m_rating;
 	int m_duration;
+
+public:
+	Movies(int moviesId, std::string type, std::string title, std::string director, int releaseYear,
+		std::string cast, std::string country, uint8_t rating, int duration);
+	Movies(const Movies& movies) = default;
+	~Movies() = default;
 };
 
