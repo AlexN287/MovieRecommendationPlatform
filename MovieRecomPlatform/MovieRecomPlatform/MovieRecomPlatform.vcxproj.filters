@@ -24,12 +24,18 @@
     <ClCompile Include="Movies.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Genres.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Movies.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Genres.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
