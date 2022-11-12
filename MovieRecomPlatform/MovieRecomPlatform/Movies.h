@@ -22,13 +22,22 @@ public:
 	~Movies() = default;
 
 	int GetMoviesID() const;
+	void SetMoviesID(int moviesId);
 	std::string GetType() const;
+	void SetType(std::string type);
 	std::string GetTitle() const;
+	void SetTitle(std::string title);
 	std::string GetDirector() const;
+	void SetDirector(std::string director);
 	int GetReleaseYear() const;
+	void SetReleaseYear(int releaseYear);
 	std::string GetCast() const;
+	void SetCast(std::string cast);
 	std::string GetCountry() const;
+	void SetCountry(std::string country);
 	uint8_t GetRating() const;
+	void SetRating(uint8_t rating);
 	int GetDuration() const;
+	void SetDuration(int duration);
 };
 
