@@ -20,5 +20,15 @@ public:
 		std::string cast, std::string country, uint8_t rating, int duration);
 	Movies(const Movies& movies) = default;
 	~Movies() = default;
+
+	int GetMoviesID() const;
+	std::string GetType() const;
+	std::string GetTitle() const;
+	std::string GetDirector() const;
+	int GetReleaseYear() const;
+	std::string GetCast() const;
+	std::string GetCountry() const;
+	uint8_t GetRating() const;
+	int GetDuration() const;
 };
 
