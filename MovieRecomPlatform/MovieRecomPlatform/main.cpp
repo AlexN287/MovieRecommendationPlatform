@@ -1,5 +1,6 @@
 #include "User.h"
 #include <sqlite_orm/sqlite_orm.h>
+#include "Genres.h"
 #include "Movies.h"
 
 void CreateDatabase()
@@ -20,8 +21,11 @@ void CreateDatabase()
 			make_column("cast", &Movies::SetCast, &Movies::GetCast),
 			make_column("country", &Movies::SetCountry, &Movies::GetCountry),
 			make_column("rating", &Movies::SetRating, &Movies::GetRating),
-			make_column("duration", &Movies::SetDuration, &Movies::GetDuration)
-		));
+			make_column("duration", &Movies::SetDuration, &Movies::GetDuration)),
+		make_table("Genres",
+			make_column("genreId", &Genres::SetGenreId, &Genres::GetGenreId, autoincrement(), primary_key()),
+			make_column("name", &Genres::SetName, &Genres::GetName))
+		);
 
 	storage.sync_schema(true);
 }
@@ -29,5 +33,5 @@ void CreateDatabase()
 int main()
 {
 	CreateDatabase();
-
+	return 0;
 }
