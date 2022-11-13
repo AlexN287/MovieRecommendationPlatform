@@ -14,7 +14,7 @@ int User::GetUserId() const
 
 std::string User::GetUsername() const
 {
-	return this->m_password;
+	return this->m_username;
 }
 
 std::string User::GetPassword() const

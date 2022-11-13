@@ -2,6 +2,7 @@
 #include <sqlite_orm/sqlite_orm.h>
 #include "Genres.h"
 #include "Movies.h"
+#include "Wishlist.h"
 
 void CreateDatabase()
 {
@@ -24,7 +25,13 @@ void CreateDatabase()
 			make_column("duration", &Movies::SetDuration, &Movies::GetDuration)),
 		make_table("Genres",
 			make_column("genreId", &Genres::SetGenreId, &Genres::GetGenreId, autoincrement(), primary_key()),
-			make_column("name", &Genres::SetName, &Genres::GetName))
+			make_column("name", &Genres::SetName, &Genres::GetName)),
+		make_table("Wishlist",
+			make_column("userId", &Wishlist::GetUserID, &Wishlist::SetUserID),
+			make_column("moviesId", &Wishlist::GetMoviesID, &Wishlist::SetMoviesID),
+			primary_key(&Wishlist::GetUserID, &Wishlist::SetUserID, &Wishlist::GetMoviesID, &Wishlist::SetMoviesID),
+			foreign_key(&Wishlist::SetUserID).references(&User::GetUserId),
+			foreign_key(&Wishlist::SetMoviesID).references(&Movies::GetMoviesID))
 		);
 
 	storage.sync_schema(true);
