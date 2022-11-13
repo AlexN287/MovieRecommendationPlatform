@@ -9,9 +9,9 @@ void CreateDatabase()
 
 	auto storage = make_storage("db.sqlite",
 		make_table("Users",
-			make_column("id", &User::m_userId, autoincrement(), primary_key()),
-			make_column("username", &User::m_username),
-			make_column("password", &User::m_password)),
+			make_column("id", &User::SetUserId, &User::GetUserId, autoincrement(), primary_key()),
+			make_column("username", &User::SetUsername, &User::GetUsername),
+			make_column("password", &User::SetPassword, &User::GetPassword)),
 		make_table("Movies",
 			make_column("moviesId", &Movies::SetMoviesID, &Movies::GetMoviesID, autoincrement(), primary_key()),
 			make_column("type", &Movies::SetType, &Movies::GetType),

@@ -7,17 +7,17 @@ User::User(int userId, std::string username, std::string password) :
 {
 }
 
-int User::GetUserId()
+int User::GetUserId() const
 {
 	return this->m_userId;
 }
 
-std::string User::GetUsername()
+std::string User::GetUsername() const
 {
 	return this->m_password;
 }
 
-std::string User::GetPassword()
+std::string User::GetPassword() const
 {
 	return this->m_password;
 }
