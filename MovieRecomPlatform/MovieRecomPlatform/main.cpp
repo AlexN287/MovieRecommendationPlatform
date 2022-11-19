@@ -5,6 +5,7 @@
 #include "Wishlist.h"
 #include "Actor.h"
 #include "MovieActor.h"
+#include "UserRating.h"
 
 void CreateDatabase()
 {
@@ -44,7 +45,14 @@ void CreateDatabase()
 			make_column("movieId", &MovieActor::SetMoviesId, &MovieActor::GetMoviesId),
 			foreign_key(&MovieActor::SetActorId).references(&Actor::GetActorId),
 			foreign_key(&MovieActor::SetMoviesId).references(&Movies::GetMoviesID),
-			primary_key(&MovieActor::SetActorId, &MovieActor::GetActorId, &MovieActor::SetMoviesId, &MovieActor::GetMoviesId))
+			primary_key(&MovieActor::SetActorId, &MovieActor::GetActorId, &MovieActor::SetMoviesId, &MovieActor::GetMoviesId)),
+		make_table("UserRating",
+			make_column("userId", &UserRating::SetUserId, &UserRating::GetUserId),
+			make_column("movieId", &UserRating::SetMovieId, &UserRating::GetMovieId),
+			make_column("rating", &UserRating::SetRating, &UserRating::GetRating),
+			foreign_key(&UserRating::SetUserId).references(&User::GetUserId),
+			foreign_key(&UserRating::SetMovieId).references(&Movies::GetMoviesID),
+			primary_key(&UserRating::SetUserId, &UserRating::GetUserId, &UserRating::SetMovieId, &UserRating::GetMovieId))
 		);
 
 	storage.sync_schema(true);
