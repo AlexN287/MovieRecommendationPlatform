@@ -6,8 +6,8 @@ private:
 	int m_userId;
 	std::string m_username;
 	std::string m_password;
-	std::string birthdate;
-	std::string gender;
+	std::string m_birthdate;
+	std::string m_gender;
 
 public:
 	User(int userId, std::string username, std::string password);
@@ -16,7 +16,7 @@ public:
 	int GetUserId() const;
 	std::string GetUsername() const;
 	std::string GetPassword() const;
-	std::string GetPassword() const;
+	std::string GetBirthdate() const;
 	std::string GetGender() const;
 	void SetUserId(int userId);
 	void SetUsername(std::string username);
