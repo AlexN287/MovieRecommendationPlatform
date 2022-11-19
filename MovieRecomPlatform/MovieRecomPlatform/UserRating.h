@@ -11,14 +11,12 @@ public:
 	UserRating(std::unique_ptr <int> userId, std::unique_ptr <int> movieId, int rating);
 	UserRating(const UserRating& userRating) = default;
 	~UserRating() = default;
-	std::unique_ptr <int> GetUserId() const;
-	std::unique_ptr <int> GetMovieId() const;
+	const std::unique_ptr <int>& GetUserId() const;
+	const std::unique_ptr <int>& GetMovieId() const;
 	int GetRating() const;
 	void SetUserId(std::unique_ptr <int> userId);
 	void SetMovieId(std::unique_ptr <int> movieId);
 	void SetRating(int rating);
-
-
 
 };
 
