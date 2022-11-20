@@ -139,18 +139,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Genres.cpp" />
+    <ClCompile Include="LikedGenre.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MovieActor.cpp" />
     <ClCompile Include="Movies.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserRating.cpp" />
+    <ClCompile Include="WatchedList.cpp" />
     <ClCompile Include="Wishlist.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="Genres.h" />
+    <ClInclude Include="LikedGenre.h" />
+    <ClInclude Include="MovieActor.h" />
     <ClInclude Include="Movies.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserRating.h" />
+    <ClInclude Include="WatchedList.h" />
     <ClInclude Include="Wishlist.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
