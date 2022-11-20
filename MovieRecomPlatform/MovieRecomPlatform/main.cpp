@@ -26,7 +26,6 @@ void CreateDatabase()
 			make_column("title", &Movies::SetTitle, &Movies::GetTitle),
 			make_column("director", &Movies::SetDirector, &Movies::GetDirector),
 			make_column("releaseYear", &Movies::SetReleaseYear, &Movies::GetReleaseYear),
-			make_column("cast", &Movies::SetCast, &Movies::GetCast),
 			make_column("country", &Movies::SetCountry, &Movies::GetCountry),
 			make_column("rating", &Movies::SetRating, &Movies::GetRating),
 			make_column("duration", &Movies::SetDuration, &Movies::GetDuration)),

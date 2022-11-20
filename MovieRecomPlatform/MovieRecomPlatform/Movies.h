@@ -10,14 +10,13 @@ private:
 	std::string m_title;
 	std::string m_director;
 	int m_releaseYear;
-	std::string m_cast;
 	std::string m_country;
 	uint8_t m_rating;
 	int m_duration;
 
 public:
 	Movies(int moviesId, std::string type, std::string title, std::string director, int releaseYear,
-		std::string cast, std::string country, uint8_t rating, int duration);
+		 std::string country, uint8_t rating, int duration);
 	Movies(const Movies& movies) = default;
 	~Movies() = default;
 
@@ -31,8 +30,6 @@ public:
 	void SetDirector(std::string director);
 	int GetReleaseYear() const;
 	void SetReleaseYear(int releaseYear);
-	std::string GetCast() const;
-	void SetCast(std::string cast);
 	std::string GetCountry() const;
 	void SetCountry(std::string country);
 	uint8_t GetRating() const;
