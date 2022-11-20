@@ -8,6 +8,7 @@
 #include "UserRating.h"
 #include "WatchedList.h"
 #include "LikedGenre.h"
+#include "MovieGenre.h"
 
 void CreateDatabase()
 {
@@ -65,7 +66,13 @@ void CreateDatabase()
 			make_column("genresId", &LikedGenre::GetGenreID, &LikedGenre::SetGenreID),
 			primary_key(&LikedGenre::GetUserID, &LikedGenre::SetUserID, &LikedGenre::GetGenreID, &LikedGenre::SetGenreID),
 			foreign_key(&LikedGenre::SetUserID).references(&User::GetUserId),
-			foreign_key(&LikedGenre::SetGenreID).references(&Genres::GetGenreId))
+			foreign_key(&LikedGenre::SetGenreID).references(&Genres::GetGenreId)),
+		make_table("MovieGenre",
+			make_column("genreId", &MovieGenre::GetGenreId, &MovieGenre::SetGenreId),
+			make_column("moviesId", &MovieGenre::GetMoviesId, &MovieGenre::SetMoviesId),
+			primary_key(&MovieGenre::GetGenreId, &MovieGenre::SetGenreId, &MovieGenre::GetMoviesId, &MovieGenre::SetMoviesId),
+			foreign_key(&MovieGenre::SetGenreId).references(&Genres::GetGenreId),
+			foreign_key(&MovieGenre::SetMoviesId).references(&Movies::GetMoviesID))
 		);
 
 	storage.sync_schema(true);
