@@ -1,4 +1,6 @@
 #include "Login.h"
+#include"Database.h"
+#include"User.h"
 
 Login::Login(const std::string& username, const std::string& password) : m_username{ username }, m_password{ password }
 {}
@@ -21,4 +23,22 @@ void Login::SetPassword(const std::string& password)
 std::string Login::GetPassword() const
 {
 	return m_password;
+}
+
+bool Login::checkUser()
+{
+    using namespace sqlite_orm;
+    namespace sql = sqlite_orm;
+    Database db;
+    auto userUsername = db.m_storage.select(columns(&User::GetUsername),
+        sql::where(c(&User::GetUsername) == m_username));
+    auto userPassword = db.m_storage.select(columns(&User::GetPassword),
+        sql::where(c(&User::GetPassword) == m_password));
+
+    if (userUsername.empty())
+        return false;
+    if (userPassword.empty())
+        return false;
+
+        return true;
 }

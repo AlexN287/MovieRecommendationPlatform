@@ -22,5 +22,7 @@ public:
 	void SetPassword(const std::string& password);
 	std::string GetPassword() const;
 
+	bool checkUser();
+	void showUser();
 };
 
