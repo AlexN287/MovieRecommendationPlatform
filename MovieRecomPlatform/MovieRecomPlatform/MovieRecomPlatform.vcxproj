@@ -143,6 +143,7 @@
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="Genres.cpp" />
     <ClCompile Include="LikedGenre.cpp" />
+    <ClCompile Include="Login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MovieActor.cpp" />
     <ClCompile Include="MovieGenre.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Database.h" />
     <ClInclude Include="Genres.h" />
     <ClInclude Include="LikedGenre.h" />
+    <ClInclude Include="Login.h" />
     <ClInclude Include="MovieActor.h" />
     <ClInclude Include="MovieGenre.h" />
     <ClInclude Include="Movies.h" />
@@ -164,11 +166,6 @@
     <ClInclude Include="UserRating.h" />
     <ClInclude Include="WatchedList.h" />
     <ClInclude Include="Wishlist.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UserRegister\UserRegister.vcxproj">
-      <Project>{388b270d-0449-4fa0-842d-880762972074}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
