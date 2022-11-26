@@ -3,14 +3,15 @@
 class User
 {
 private:
-	int m_userId;
+	int m_userId; //TODO
 	std::string m_username;
 	std::string m_password;
 	std::string m_birthdate;
 	std::string m_gender;
 
 public:
-	User(int userId,const std::string& username,const std::string& password,const std::string& birthdate,const std::string& gender);
+
+	User(const std::string& username,const std::string& password,const std::string& birthdate,const std::string& gender);
 	User(const User& user) = default;
 	~User() = default;
 	int GetUserId() const;

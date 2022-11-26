@@ -6,7 +6,9 @@
 #include<stdexcept>
 
 Login::Login(const std::string& username, const std::string& password) : m_username{ username }, m_password{ password }
-{}
+{
+    showUser();
+}
 
 void Login::SetUsername(const std::string& username)
 {

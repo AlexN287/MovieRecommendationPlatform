@@ -1,12 +1,13 @@
 #include "User.h"
 
-User::User(int userId,const std::string& username,const std::string& password,const std::string& birthdate,const std::string& gender) : 
-	m_userId{userId},
-	m_username{username},
-	m_password{password},
-	m_birthdate{birthdate},
-	m_gender{gender}
+User::User(const std::string& username, const std::string& password, const std::string& birthdate, const std::string& gender) :
+	m_username{ username },
+	m_password{ password },
+	m_birthdate{ birthdate },
+	m_gender{ gender },
+	m_userId{ 0 } //TODO
 {
+	
 }
 
 int User::GetUserId() const
