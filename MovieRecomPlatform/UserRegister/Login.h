@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include"..\MovieRecomPlatform\User.h"
+#include"..\MovieRecomPlatform\Database.h"
 
 #ifdef LOGIN_EXPORTS
 #define LOGIN_API __declspec(dllexport)
@@ -30,6 +32,8 @@ public:
 	void SetPassword(const std::string& password);
 	std::string GetPassword() const;
 
+	bool checkUser();
+	void showUser();
 };
 
 

@@ -10,7 +10,7 @@ private:
 	std::string m_gender;
 
 public:
-	User(int userId, std::string username, std::string password);
+	User(int userId,const std::string& username,const std::string& password,const std::string& birthdate,const std::string& gender);
 	User(const User& user) = default;
 	~User() = default;
 	int GetUserId() const;
