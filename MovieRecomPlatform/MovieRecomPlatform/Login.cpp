@@ -62,4 +62,32 @@ void Login::showUser()
         std::cout << exception;
         return;
     }
+
+    std::cout << "0 - Exit \n";
+    std::cout << "1 - Show username \n";
+    std::cout << "2 - Show birthdate \n";
+    std::cout << "3 - Show gender \n";
+
+    bool exitCondition = false;
+    while (!exitCondition)
+    {
+        int option;
+        std::cin >> option;
+
+        switch (option)
+        {
+        case 0:
+            exitCondition = true;
+            break;
+        case 1:
+            std::cout << std::get<0>(user[0]) << "\n";
+            break;
+        case 2:
+            std::cout << std::get<2>(user[0]) << "\n";
+            break;
+        case 3:
+            std::cout << std::get<3>(user[0]) << "\n";
+            break;
+        }
+    }
 }
