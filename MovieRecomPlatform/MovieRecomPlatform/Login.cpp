@@ -1,6 +1,9 @@
 #include "Login.h"
 #include"Database.h"
 #include"User.h"
+#include<iostream>
+#include<tuple>
+#include<stdexcept>
 
 Login::Login(const std::string& username, const std::string& password) : m_username{ username }, m_password{ password }
 {}
@@ -25,20 +28,38 @@ std::string Login::GetPassword() const
 	return m_password;
 }
 
-bool Login::checkUser()
+inline auto Login::checkUser()
 {
     using namespace sqlite_orm;
     namespace sql = sqlite_orm;
     Database db;
-    auto userUsername = db.m_storage.select(columns(&User::GetUsername),
+   
+    auto User= db.m_storage.select(columns(&User::GetUsername,&User::GetPassword,&User::GetBirthdate,&User::GetGender),
         sql::where(c(&User::GetUsername) == m_username));
-    auto userPassword = db.m_storage.select(columns(&User::GetPassword),
-        sql::where(c(&User::GetPassword) == m_password));
+    if (User.empty())
+    {
+        throw "Username not found. Please register. \n";
+    }
 
-    if (userUsername.empty())
-        return false;
-    if (userPassword.empty())
-        return false;
+    if (std::get<1>(User[0]) != m_password)
+    {
+        throw "Password incorrect. Please try again. \n";
+    }
+        return User;
+}
 
-        return true;
+void Login::showUser()
+{
+    using loggedUser = decltype(checkUser());
+    loggedUser user;
+
+    try
+    {
+        user = checkUser();
+    }
+    catch (const std::string& exception)
+    {
+        std::cout << exception;
+        return;
+    }
 }

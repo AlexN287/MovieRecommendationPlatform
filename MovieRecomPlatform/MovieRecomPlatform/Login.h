@@ -10,7 +10,7 @@ class Login
 		Error
 	};
 
-private:
+public:
 	std::string m_username;
 	std::string m_password;
 
@@ -22,7 +22,7 @@ public:
 	void SetPassword(const std::string& password);
 	std::string GetPassword() const;
 
-	bool checkUser();
+	inline auto checkUser();
 	void showUser();
 };
 
