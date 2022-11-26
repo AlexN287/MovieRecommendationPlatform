@@ -163,6 +163,11 @@
     <ClInclude Include="WatchedList.h" />
     <ClInclude Include="Wishlist.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UserRegister\UserRegister.vcxproj">
+      <Project>{388b270d-0449-4fa0-842d-880762972074}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
