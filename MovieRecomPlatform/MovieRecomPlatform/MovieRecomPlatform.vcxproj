@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Database.cpp" />
     <ClCompile Include="Genres.cpp" />
     <ClCompile Include="LikedGenre.cpp" />
     <ClCompile Include="main.cpp" />
@@ -153,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Database.h" />
     <ClInclude Include="Genres.h" />
     <ClInclude Include="LikedGenre.h" />
     <ClInclude Include="MovieActor.h" />
