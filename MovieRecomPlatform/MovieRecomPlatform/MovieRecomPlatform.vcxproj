@@ -142,6 +142,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="Genres.cpp" />
+    <ClCompile Include="LikedActors.cpp" />
     <ClCompile Include="LikedGenre.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="main.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Database.h" />
     <ClInclude Include="Genres.h" />
+    <ClInclude Include="LikedActors.h" />
     <ClInclude Include="LikedGenre.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="MovieActor.h" />

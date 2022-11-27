@@ -10,6 +10,7 @@
 #include "LikedGenre.h"
 #include "MovieGenre.h"
 #include "User.h"
+#include "LikedActors.h"
 
 inline auto CreateDatabase()
 {
@@ -73,7 +74,13 @@ inline auto CreateDatabase()
 			make_column("moviesId", &MovieGenre::GetMoviesId, &MovieGenre::SetMoviesId),
 			primary_key(&MovieGenre::GetGenreId, &MovieGenre::SetGenreId, &MovieGenre::GetMoviesId, &MovieGenre::SetMoviesId),
 			foreign_key(&MovieGenre::SetGenreId).references(&Genres::GetGenreId),
-			foreign_key(&MovieGenre::SetMoviesId).references(&Movies::GetMoviesID))
+			foreign_key(&MovieGenre::SetMoviesId).references(&Movies::GetMoviesID)),
+		make_table("LikedActors",
+			make_column("userId", &LikedActors::GetUserId, &LikedActors::SetUserId),
+			make_column("actorId", &LikedActors::GetActorId, &LikedActors::SetActorId),
+			primary_key(&LikedActors::GetUserId, &LikedActors::SetUserId, &LikedActors::GetActorId, &LikedActors::SetActorId),
+			foreign_key(&LikedActors::SetUserId).references(&User::GetUserId),
+			foreign_key(&LikedActors::SetActorId).references(&Actor::GetActorId))
 	);
 }
 

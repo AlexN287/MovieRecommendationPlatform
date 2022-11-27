@@ -24,6 +24,6 @@ int main()
 
 	Login firstLog(username, password);
 	*/
-	SignUp();
+	//SignUp();
 	return 0;
 }
