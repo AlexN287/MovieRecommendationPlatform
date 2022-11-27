@@ -10,6 +10,18 @@ bool SignUp::existentUsername(const std::string& username) {
 	return !User.empty();
 }
 
+void SignUp::addUserInDatabase(const User& user) {
+	using namespace sqlite_orm;
+	namespace sql = sqlite_orm;
+	Database db;
+
+	db.m_storage.insert(user);
+	if (existentUsername(user.GetUsername()))
+		std::cout << SignUpStatusToString(SignUp::SignUpStatus::Successful);
+	else
+		std::cout << SignUpStatusToString(SignUp::SignUpStatus::Error);
+}
+
 std::string SignUp::SignUpStatusToString(SignUp::SignUpStatus status) {
 	switch (status)
 	{
