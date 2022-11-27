@@ -1,6 +1,22 @@
 #include "SignUp.h"
 #include"Database.h"
 
+SignUp::SignUp() {
+	addUserInDatabase(createUser());
+}
+User SignUp::createUser() {
+	std::cout << "Username: "; std::cin >> m_username;
+	while (existentUsername(m_username)) {
+		std::cout << SignUpStatusToString(SignUp::SignUpStatus::ExistentUser);
+		std::cout << "Username: "; std::cin >> m_username;
+	}
+	std::cout << "Password: "; std::cin >> m_password;
+	std::cout << "Birthdate: "; std::cin >> m_birthdate;
+	std::cout << "Gender: "; std::cin >> m_gender;
+	User newUser(m_username, m_password, m_birthdate, m_gender);
+	return newUser;
+}
+
 bool SignUp::existentUsername(const std::string& username) {
 	using namespace sqlite_orm;
 	namespace sql = sqlite_orm;

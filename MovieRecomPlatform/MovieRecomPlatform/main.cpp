@@ -1,12 +1,13 @@
 #include "Database.h"
 #include "Login.h"
+#include "SignUp.h"
 #include <iostream>
 
 int main()
 {
 	Database db;
 
-	User user("JosephStalin", "Bestruler46", "23.08.1899", "Male");
+	/*User user("Name", "Password", "10.10.2010", "Female");
 
 	//db.m_storage.insert(user);
 
@@ -22,6 +23,7 @@ int main()
 	std::cout << "\n";
 
 	Login firstLog(username, password);
-
+	*/
+	SignUp();
 	return 0;
 }
