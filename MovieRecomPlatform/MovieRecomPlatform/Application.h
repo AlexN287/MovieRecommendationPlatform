@@ -3,6 +3,7 @@
 #include <optional>
 #include <memory>
 #include "Database.h"
+#include <iostream>
 
 class Application
 {
@@ -14,7 +15,7 @@ class Application
 
 public:
 	Application() = default;
-	Movies SearchMovie(const std::string& movieName);
+	inline auto SearchMovie(const std::string& movieName);
 	bool findSubString(std::string string, const std::string& subString);
 	void ShowMovie();
 	std::string SearchStatusToString(Application::SearchStatus searchStatus);
