@@ -35,20 +35,18 @@ std::string Login::LoginStatusToString(Login::LoginStatus loginStatus)
     switch (loginStatus)
     {
     case Login::LoginStatus::Successful:
-        return "Successful";
+        return "Successful \n";
         break;
     case Login::LoginStatus::NotRegistered:
-        return "Not registered";
+        return "Not registered \n";
         break;
     case Login::LoginStatus::WrongPassword:
-        return "Wrong password";
+        return "Wrong password \n";
         break;
     default:
-        return "Authentification error";
+        return "Authentification error \n";
     }
 }
-
-
 
 inline auto Login::checkUser()
 {
@@ -61,18 +59,16 @@ inline auto Login::checkUser()
     try {
         if (User.empty())
         {
-            //throw std::string("Username not found. Please register. \n");
-            throw std::runtime_error("Username not found. Please register. \n");
+            throw LoginStatusToString(Login::LoginStatus::NotRegistered);
         }
         if (std::get<1>(User[0]) != m_password)
         {
-            //throw std::string("Password incorrect. Please try again. \n");
-            throw std::runtime_error("Password incorrect. Please try again. \n");
+            throw LoginStatusToString(Login::LoginStatus::WrongPassword);
         }
     }
-    catch (const std::exception& exceptional_result)
+    catch (const std::string& exception)
     {
-        std::cout << exceptional_result.what();
+        std::cout << exception;
         User.clear();
     }
         return User;
@@ -95,6 +91,7 @@ void Login::showUser()
         return;
     }
 
+    std::cout << LoginStatusToString(Login::LoginStatus::Successful);
     std::cout << "0 - Exit \n";
     std::cout << "1 - Show username \n";
     std::cout << "2 - Show birthdate \n";
