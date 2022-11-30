@@ -2,15 +2,14 @@
 #include <string>
 class Login
 {
-	enum class AuthentificationStatus
+	enum class LoginStatus
 	{
 		Successful,
 		NotRegistered,
-		WrongPassword,
-		Error
+		WrongPassword
 	};
 
-public:
+private:
 	std::string m_username;
 	std::string m_password;
 
@@ -21,7 +20,7 @@ public:
 	std::string GetUsername() const;
 	void SetPassword(const std::string& password);
 	std::string GetPassword() const;
-
+	std::string LoginStatusToString(Login::LoginStatus loginStatus);
 	inline auto checkUser();
 	void showUser();
 };

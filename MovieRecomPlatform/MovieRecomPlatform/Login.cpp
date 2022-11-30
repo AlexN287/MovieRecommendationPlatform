@@ -30,6 +30,26 @@ std::string Login::GetPassword() const
 	return m_password;
 }
 
+std::string Login::LoginStatusToString(Login::LoginStatus loginStatus)
+{
+    switch (loginStatus)
+    {
+    case Login::LoginStatus::Successful:
+        return "Successful";
+        break;
+    case Login::LoginStatus::NotRegistered:
+        return "Not registered";
+        break;
+    case Login::LoginStatus::WrongPassword:
+        return "Wrong password";
+        break;
+    default:
+        return "Authentification error";
+    }
+}
+
+
+
 inline auto Login::checkUser()
 {
     using namespace sqlite_orm;
@@ -38,14 +58,22 @@ inline auto Login::checkUser()
    
     auto User= db.m_storage.select(columns(&User::GetUsername,&User::GetPassword,&User::GetBirthdate,&User::GetGender),
         sql::where(c(&User::GetUsername) == m_username));
-    if (User.empty())
-    {
-        throw "Username not found. Please register. \n";
+    try {
+        if (User.empty())
+        {
+            //throw std::string("Username not found. Please register. \n");
+            throw std::runtime_error("Username not found. Please register. \n");
+        }
+        if (std::get<1>(User[0]) != m_password)
+        {
+            //throw std::string("Password incorrect. Please try again. \n");
+            throw std::runtime_error("Password incorrect. Please try again. \n");
+        }
     }
-
-    if (std::get<1>(User[0]) != m_password)
+    catch (const std::exception& exceptional_result)
     {
-        throw "Password incorrect. Please try again. \n";
+        std::cout << exceptional_result.what();
+        User.clear();
     }
         return User;
 }
@@ -58,6 +86,8 @@ void Login::showUser()
     try
     {
         user = checkUser();
+        if (user.empty())
+            throw std::string("Try again. \n");
     }
     catch (const std::string& exception)
     {
