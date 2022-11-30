@@ -1,5 +1,8 @@
 #pragma once
 #include"Movies.h"
+#include <optional>
+#include <memory>
+#include "Database.h"
 
 class Application
 {
@@ -12,7 +15,7 @@ class Application
 public:
 	Application() = default;
 	Movies SearchMovie(const std::string& movieName);
-	bool findSubString(const std::string& string, const std::string& subString);
+	bool findSubString(std::optional<std::unique_ptr<std::string>> string, const std::string& subString);
 	void ShowMovie();
 };
 
