@@ -11,7 +11,8 @@ class Application
 
 public:
 	Application() = default;
-	Movies SearchMovie();
+	Movies SearchMovie(const std::string& movieName);
+	bool findSubString(const std::string& string, const std::string& subString);
 	void ShowMovie();
 };
 
