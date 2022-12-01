@@ -28,8 +28,8 @@ int main()
 	//SignUp();
 	
 
-	Movies movie("Movie", "Stalin", "Adolf", 1933, "Deutschland", 5, 120);
-	db.m_storage.insert(movie);
+	/*Movies movie("Movie", "Stalin", "Adolf", 1933, "Deutschland", 5, 120);
+	db.m_storage.insert(movie);*/
 
 	std::cout << "Enter movie: \n";
 	std::string movieName;
