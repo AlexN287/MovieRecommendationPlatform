@@ -1,15 +1,17 @@
 #include "Movies.h"
 
-Movies::Movies(std::string type, std::string title, std::string director, int releaseYear,
-	 std::string country, uint8_t rating, int duration) :
+Movies::Movies(std::string type, std::string title, std::string director,
+	 std::string country, std::string dateAdded, int releaseYear ,uint8_t rating, int duration, std::string description) :
 	m_moviesId{ 0 }, //TODO
 	m_type{ type },
 	m_title{ title },
 	m_director{ director },
 	m_releaseYear{ releaseYear },
 	m_country{ country },
+	m_dateAdded{dateAdded},
 	m_rating{ rating },
-	m_duration{ duration }
+	m_duration{ duration },
+	m_description{description}
 {
 }
 
@@ -28,7 +30,7 @@ std::string Movies::GetType() const
 	return m_type;
 }
 
-void Movies::SetType(std::string type)
+void Movies::SetType(const std::string& type)
 {
 	m_type = type;
 }
@@ -38,7 +40,7 @@ std::string Movies::GetTitle() const
 	return m_title;
 }
 
-void Movies::SetTitle(std::string title)
+void Movies::SetTitle(const std::string& title)
 {
 	m_title = title;
 }
@@ -48,7 +50,7 @@ std::string Movies::GetDirector() const
 	return m_director;
 }
 
-void Movies::SetDirector(std::string director)
+void Movies::SetDirector(const std::string& director)
 {
 	m_director = director;
 }
@@ -68,9 +70,19 @@ std::string Movies::GetCountry() const
 	return m_country;
 }
 
-void Movies::SetCountry(std::string country)
+void Movies::SetCountry(const std::string& country)
 {
 	m_country = country;
+}
+
+std::string Movies::GetDateAdded()
+{
+	return m_dateAdded;
+}
+
+void Movies::SetDateAdded(const std::string& dateAdded)
+{
+	m_dateAdded = dateAdded;
 }
 
 uint8_t Movies::GetRating() const
@@ -91,4 +103,14 @@ int Movies::GetDuration() const
 void Movies::SetDuration(int duration)
 {
 	m_duration = duration;
+}
+
+std::string Movies::GetDescription()
+{
+	return m_description;
+}
+
+void Movies::SetDescription(const std::string& description)
+{
+	m_description = description;
 }
