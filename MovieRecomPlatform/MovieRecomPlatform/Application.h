@@ -1,8 +1,6 @@
 #pragma once
-#include"Movies.h"
 #include <optional>
 #include <memory>
-#include "Database.h"
 #include <iostream>
 
 class Application
@@ -17,7 +15,7 @@ public:
 	Application() = default;
 	inline auto SearchMovie(const std::string& movieName);
 	bool findSubString(std::string string, const std::string& subString);
-	void ShowMovie();
+	void ShowMovie(std::string movieName); //TODO
 	std::string SearchStatusToString(Application::SearchStatus searchStatus);
 };
 

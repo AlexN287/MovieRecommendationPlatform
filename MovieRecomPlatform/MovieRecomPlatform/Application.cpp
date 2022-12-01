@@ -1,6 +1,7 @@
 #include "Application.h"
-#include<algorithm>
-
+#include "Database.h"
+#include"Movies.h"
+#include <algorithm>
 
 inline auto Application::SearchMovie(const std::string& movieName)
 {
@@ -32,11 +33,12 @@ inline auto Application::SearchMovie(const std::string& movieName)
 
     std::cout << "Enter: \n";
     int option;
-    std::cout << option;
+    std::cin >> option;
 
     option--;
 
     return foundMovies[option];
+ 
 
 }
 
@@ -50,15 +52,63 @@ bool Application::findSubString(std::string string, const std::string& subString
     return (it==string.begin());
 }
 
+void Application::ShowMovie(std::string movieName)
+{
+    using foundMovie = decltype(SearchMovie(""));
+
+    foundMovie movie = SearchMovie(movieName); //TODO
+
+    std::cout << "0 - Exit \n";
+    std::cout << "1 - Show type \n";
+    std::cout << "2 - Show director \n";
+    std::cout << "3 - Show release year \n";
+    std::cout << "4 - Show country \n";
+    std::cout << "5 - Show rating \n";
+    std::cout << "6 - Show duration \n";
+
+    int option;
+    std::cin >> option;
+
+    while (option != 0) {
+    
+        switch (option)
+        { 
+        
+        case 1: 
+            std::cout << std::get<1>(movie) << "\n";
+            break;
+        case 2:
+            std::cout << std::get<2>(movie) << "\n";
+            break;
+        case 3:
+            std::cout << std::get<3>(movie) << "\n";
+            break;
+        case 4:
+            std::cout << std::get<4>(movie) << "\n";
+            break;
+        case 5:
+            std::cout << std::get<5>(movie) << "\n";
+            break;
+        case 6:
+            std::cout << std::get<6>(movie) << "\n";
+            break;
+        }
+
+    std::cin >> option;
+       
+    }
+
+}
+
 std::string Application::SearchStatusToString(Application::SearchStatus searchStatus)
 {
     switch (searchStatus)
     {
     case Application::SearchStatus::Found :
-        return "Found";
+        return "Found \n";
         break;
     case Application::SearchStatus::NotFound: 
-        return "Not found";
+        return "Not found \n";
         break;
     default:
         return "Error";

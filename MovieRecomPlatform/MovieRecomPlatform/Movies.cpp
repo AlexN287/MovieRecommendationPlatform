@@ -1,8 +1,8 @@
 #include "Movies.h"
 
-Movies::Movies(int moviesId, std::string type, std::string title, std::string director, int releaseYear,
+Movies::Movies(std::string type, std::string title, std::string director, int releaseYear,
 	 std::string country, uint8_t rating, int duration) :
-	m_moviesId{ moviesId },
+	m_moviesId{ 0 }, //TODO
 	m_type{ type },
 	m_title{ title },
 	m_director{ director },

@@ -15,7 +15,7 @@ private:
 	int m_duration;
 
 public:
-	Movies(int moviesId, std::string type, std::string title, std::string director, int releaseYear,
+	Movies(std::string type, std::string title, std::string director, int releaseYear,
 		 std::string country, uint8_t rating, int duration);
 	Movies(const Movies& movies) = default;
 	~Movies() = default;
