@@ -11,6 +11,7 @@
 #include "MovieGenre.h"
 #include "User.h"
 #include "LikedActors.h"
+#include <memory>
 
 inline auto CreateDatabase()
 {
@@ -89,13 +90,45 @@ inline auto CreateDatabase()
 using Storage = decltype(CreateDatabase());
 class Database
 {
-public:
-	Storage m_storage = CreateDatabase();
-public:
+	std::unique_ptr<Storage> m_storage;
 	Database();
-	void initialize();
-	void populateMovies(const std::string& fileName);
-	void populateActors(const std::string& fileName);
-	void populateGenres(const std::string& fileName);
+	void SyncSchema();
+	static Database* instance;
+public:
+	/*const std::unique_ptr<Storage>& GetStorage() const
+	{
+		return m_storage;
+	}*/
+	Database(Database&) = delete;
+	void operator=(const Database&) = delete;
+	static Database* GetInstance();
+	static void PopulateMovies(const std::string& fileName);
+	static void PopulateActors(const std::string& fileName);
+	static void PopulateGenres(const std::string& fileName);
+
+	template<class T>
+	static void InsertElement(T element)
+	{
+		instance->m_storage->insert(element);
+	}
+
+	template<class T>
+	static void RemoveElement(T element)
+	{
+		instance->m_storage->remove(element);
+	}
+
+	template<class T>
+	static void ReplaceElement(T element)
+	{
+		instance->m_storage->replace(element);
+	}
+
+	template<class T>
+	static auto GetElements()
+	{
+		return instance->m_storage->get_all<T>;
+	}
+
 };
 

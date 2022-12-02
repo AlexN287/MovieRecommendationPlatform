@@ -8,6 +8,7 @@ private:
 	int m_rating;
 
 public:
+	UserRating() = default;
 	UserRating(std::unique_ptr <int> userId, std::unique_ptr <int> movieId, int rating);
 	UserRating(const UserRating& userRating) = default;
 	~UserRating() = default;

@@ -17,6 +17,7 @@ private:
 	std::string m_description;
 
 public:
+	Movies() = default;
 	Movies(std::string type, std::string title, std::string director,
 		 std::string country, std::string dateAdded, int releaseYear, uint8_t rating, int duration, std::string description);
 	Movies(const Movies& movies) = default;
@@ -25,22 +26,22 @@ public:
 	int GetMoviesID() const;
 	void SetMoviesID(int moviesId);
 	std::string GetType() const;
-	void SetType(const std::string& type);
+	void SetType( std::string type);
 	std::string GetTitle() const;
-	void SetTitle(const std::string& title);
+	void SetTitle(std::string title);
 	std::string GetDirector() const;
-	void SetDirector(const std::string& director);
+	void SetDirector(std::string director);
 	int GetReleaseYear() const;
 	void SetReleaseYear(int releaseYear);
 	std::string GetCountry() const;
-	void SetCountry(const std::string& country);
-	std::string GetDateAdded();
-	void SetDateAdded(const std::string& dateAdded);
+	void SetCountry(std::string country);
+	std::string GetDateAdded() const;
+	void SetDateAdded( std::string dateAdded);
 	uint8_t GetRating() const;
 	void SetRating(uint8_t rating);
 	int GetDuration() const;
 	void SetDuration(int duration);
-	std::string GetDescription();
-	void SetDescription(const std::string& description);
+	std::string GetDescription() const;
+	void SetDescription(std::string description);
 };
 

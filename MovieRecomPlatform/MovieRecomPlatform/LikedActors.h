@@ -7,6 +7,7 @@ private:
 	std::unique_ptr<int> m_userId;
 	std::unique_ptr<int> m_actorId;
 public:
+	LikedActors() = default;
 	LikedActors(std::unique_ptr<int> userId, std::unique_ptr<int>actorId);
 	~LikedActors() = default;
 

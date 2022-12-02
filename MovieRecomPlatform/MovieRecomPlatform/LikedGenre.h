@@ -7,6 +7,7 @@ private:
 	std::unique_ptr<int> m_genreID;
 
 public:
+	LikedGenre() = default;
 	LikedGenre(std::unique_ptr<int> userId, std::unique_ptr<int> genreId);
 	~LikedGenre() = default;
 

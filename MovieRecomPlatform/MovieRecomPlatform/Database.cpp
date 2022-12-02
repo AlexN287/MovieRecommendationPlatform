@@ -1,8 +1,23 @@
 #include "Database.h"
 
 Database::Database() {
-	initialize();
+	m_storage = std::make_unique<Storage>(CreateDatabase());
+	SyncSchema();
 }
-void Database::initialize() {
-	m_storage.sync_schema();
+void Database::SyncSchema() {
+	m_storage->sync_schema();
+}
+
+Database* Database::instance = nullptr;
+
+Database* Database::GetInstance()
+{
+	if (instance == nullptr)
+		instance = new Database();
+
+	return instance;
+}
+
+void Database::PopulateActors(const std::string& fileName)
+{
 }

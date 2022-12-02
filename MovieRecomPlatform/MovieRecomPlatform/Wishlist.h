@@ -6,6 +6,7 @@ private:
 	std::unique_ptr<int> m_moviesID;
 
 public:
+	Wishlist() = default;
 	Wishlist(std::unique_ptr<int> userId, std::unique_ptr<int> moviesId);
 	~Wishlist() = default;
 

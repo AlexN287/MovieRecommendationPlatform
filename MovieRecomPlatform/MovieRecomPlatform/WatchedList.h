@@ -7,6 +7,7 @@ private:
 	std::unique_ptr<int> m_moviesID;
 
 public:
+	WatchedList() = default;
 	WatchedList(std::unique_ptr<int> userId, std::unique_ptr<int> moviesId);
 	~WatchedList() = default;
 

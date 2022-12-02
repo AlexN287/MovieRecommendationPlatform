@@ -30,7 +30,7 @@ std::string Movies::GetType() const
 	return m_type;
 }
 
-void Movies::SetType(const std::string& type)
+void Movies::SetType(std::string type)
 {
 	m_type = type;
 }
@@ -40,7 +40,7 @@ std::string Movies::GetTitle() const
 	return m_title;
 }
 
-void Movies::SetTitle(const std::string& title)
+void Movies::SetTitle( std::string title)
 {
 	m_title = title;
 }
@@ -50,7 +50,7 @@ std::string Movies::GetDirector() const
 	return m_director;
 }
 
-void Movies::SetDirector(const std::string& director)
+void Movies::SetDirector( std::string director)
 {
 	m_director = director;
 }
@@ -70,17 +70,17 @@ std::string Movies::GetCountry() const
 	return m_country;
 }
 
-void Movies::SetCountry(const std::string& country)
+void Movies::SetCountry( std::string country)
 {
 	m_country = country;
 }
 
-std::string Movies::GetDateAdded()
+std::string Movies::GetDateAdded() const
 {
 	return m_dateAdded;
 }
 
-void Movies::SetDateAdded(const std::string& dateAdded)
+void Movies::SetDateAdded(std::string dateAdded)
 {
 	m_dateAdded = dateAdded;
 }
@@ -105,12 +105,12 @@ void Movies::SetDuration(int duration)
 	m_duration = duration;
 }
 
-std::string Movies::GetDescription()
+std::string Movies::GetDescription() const
 {
 	return m_description;
 }
 
-void Movies::SetDescription(const std::string& description)
+void Movies::SetDescription(std::string description)
 {
 	m_description = description;
 }

@@ -5,6 +5,7 @@ class MovieActor
 	std::unique_ptr<int> m_actorId;
 	std::unique_ptr<int> m_moviesId;
 public:
+	MovieActor() = default;
 	MovieActor(std::unique_ptr<int> actorId, std::unique_ptr<int> moviesId);
 	~MovieActor() = default;
 
