@@ -1,6 +1,6 @@
 #include "Database.h"
-//#include "Login.h"
-//#include "SignUp.h"
+#include "Login.h"
+#include "SignUp.h"
 //#include "Application.h"
 #include <iostream>
 
@@ -56,4 +56,20 @@ int main()
 	//Application application;
 	//application.ShowMovie(movieName);
 
+	//User user("Marcel", "Password2", "10.10.2010", "Female");
+	//Database::GetInstance()->InsertElement(user);
+	//std::string username, password;
+
+	//std::cout << "Login: \n";
+
+	//std::cout << "Enter username: ";
+	//std::cin >> username;
+	//std::cout << "\n";
+	//std::cout << "Enter password: ";
+	//std::cin >> password;
+	//std::cout << "\n";
+
+	//Login firstLog(username, password);
+
+	SignUp();
 }

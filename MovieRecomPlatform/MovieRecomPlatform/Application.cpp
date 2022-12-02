@@ -5,8 +5,6 @@
 //
 //inline auto Application::SearchMovie(const std::string& movieName)
 //{
-//   
-//
 //    auto foundMovies = Database::GetElements<Movies>();
 //
 //    try {

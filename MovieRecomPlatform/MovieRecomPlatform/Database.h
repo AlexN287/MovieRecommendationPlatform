@@ -95,10 +95,7 @@ class Database
 	void SyncSchema();
 	static Database* instance;
 public:
-	/*const std::unique_ptr<Storage>& GetStorage() const
-	{
-		return m_storage;
-	}*/
+	
 	Database(Database&) = delete;
 	void operator=(const Database&) = delete;
 	static Database* GetInstance();
@@ -127,7 +124,7 @@ public:
 	template<class T>
 	static auto GetElements()
 	{
-		return instance->m_storage->get_all<T>;
+		return instance->m_storage->get_all<T>();
 	}
 
 };
