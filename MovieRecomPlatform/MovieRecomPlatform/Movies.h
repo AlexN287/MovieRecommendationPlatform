@@ -12,16 +12,16 @@ private:
 	std::string m_cast;
 	std::string m_country;
 	std::string m_dateAdded;
-	int m_releaseYear;
+	std::string m_releaseYear;
 	std::string m_rating;
-	int m_duration;
+	std::string m_duration;
 	std::string m_genres;
 	std::string m_description;
 
 public:
 	Movies() = default;
 	Movies(std::string type, std::string title, std::string director, std::string cast,
-		 std::string country, std::string dateAdded, int releaseYear, std::string rating, int duration, 
+		 std::string country, std::string dateAdded, std::string releaseYear, std::string rating, std::string duration,
 		std::string genres, std::string description);
 	Movies(const Movies& movies) = default;
 	~Movies() = default;
@@ -36,16 +36,16 @@ public:
 	void SetDirector(std::string director);
 	std::string GetCast() const;
 	void SetCast(std::string cast);
-	int GetReleaseYear() const;
-	void SetReleaseYear(int releaseYear);
+	std::string GetReleaseYear() const;
+	void SetReleaseYear(std::string releaseYear);
 	std::string GetCountry() const;
 	void SetCountry(std::string country);
 	std::string GetDateAdded() const;
 	void SetDateAdded( std::string dateAdded);
 	std::string GetRating() const;
 	void SetRating(std::string rating);
-	int GetDuration() const;
-	void SetDuration(int duration);
+	std::string GetDuration() const;
+	void SetDuration(std::string duration);
 	std::string GetGenres() const;
 	void SetGenres(std::string genres);
 	std::string GetDescription() const;

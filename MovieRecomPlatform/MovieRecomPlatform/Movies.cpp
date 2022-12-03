@@ -1,7 +1,7 @@
 #include "Movies.h"
 
 Movies::Movies(std::string type, std::string title, std::string director, std::string cast,
-	 std::string country, std::string dateAdded, int releaseYear , std::string rating, int duration,
+	 std::string country, std::string dateAdded, std::string releaseYear , std::string rating, std::string duration,
 	std::string genres, std::string description) :
 	m_moviesId{ 0 }, //TODO
 	m_type{ type },
@@ -68,12 +68,12 @@ void Movies::SetCast(std::string cast)
 	m_cast = cast;
 }
 
-int Movies::GetReleaseYear() const
+std::string Movies::GetReleaseYear() const
 {
 	return m_releaseYear;
 }
 
-void Movies::SetReleaseYear(int releaseYear)
+void Movies::SetReleaseYear(std::string releaseYear)
 {
 	m_releaseYear = releaseYear;
 }
@@ -108,12 +108,12 @@ void Movies::SetRating(std::string rating)
 	m_rating = rating;
 }
 
-int Movies::GetDuration() const
+std::string Movies::GetDuration() const
 {
 	return m_duration;
 }
 
-void Movies::SetDuration(int duration)
+void Movies::SetDuration(std::string duration)
 {
 	m_duration = duration;
 }
