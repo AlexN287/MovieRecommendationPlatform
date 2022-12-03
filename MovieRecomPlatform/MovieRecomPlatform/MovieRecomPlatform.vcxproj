@@ -175,6 +175,9 @@
     <ClInclude Include="WatchedList.h" />
     <ClInclude Include="Wishlist.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="netflix_titles.csv" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

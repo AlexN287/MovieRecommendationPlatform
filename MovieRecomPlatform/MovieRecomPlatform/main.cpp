@@ -71,5 +71,6 @@ int main()
 
 	//Login firstLog(username, password);
 
-	SignUp();
+	//SignUp();
+	Database::GetInstance()->PopulateMovies("netflix_titles.csv");
 }

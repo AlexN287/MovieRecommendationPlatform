@@ -21,7 +21,6 @@ bool SignUp::existentUsername(const std::string& username) {
 	using namespace sqlite_orm;
 	namespace sql = sqlite_orm;
 
-	/*auto User = db.m_storage.select(columns(&User::GetUsername), sql::where(c(&User::GetUsername) == m_username));*/
 	auto userTable = Database::GetInstance()->GetElements<User>();
 	for (int i = 0; i < userTable.size(); i++)
 	{

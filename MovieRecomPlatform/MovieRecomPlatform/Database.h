@@ -12,6 +12,8 @@
 #include "User.h"
 #include "LikedActors.h"
 #include <memory>
+#include<fstream>
+#include<iostream>
 
 inline auto CreateDatabase()
 {
@@ -29,11 +31,13 @@ inline auto CreateDatabase()
 			make_column("type", &Movies::SetType, &Movies::GetType),
 			make_column("title", &Movies::SetTitle, &Movies::GetTitle),
 			make_column("director", &Movies::SetDirector, &Movies::GetDirector),
+			make_column("cast", &Movies::SetCast, &Movies::GetCast),
 			make_column("country", &Movies::SetCountry, &Movies::GetCountry),
 			make_column("dateAdded", &Movies::SetDateAdded, &Movies::GetDateAdded),
 			make_column("releaseYear", &Movies::SetReleaseYear, &Movies::GetReleaseYear),
 			make_column("rating", &Movies::SetRating, &Movies::GetRating),
 			make_column("duration", &Movies::SetDuration, &Movies::GetDuration),
+			make_column("genres", &Movies::SetGenres, &Movies::GetGenres),
 		    make_column("description", &Movies::SetDescription, &Movies::GetDescription)),
 		make_table("Genres",
 			make_column("genreId", &Genres::SetGenreId, &Genres::GetGenreId, autoincrement(), primary_key()),
@@ -102,7 +106,6 @@ public:
 	static void PopulateMovies(const std::string& fileName);
 	static void PopulateActors(const std::string& fileName);
 	static void PopulateGenres(const std::string& fileName);
-
 	template<class T>
 	static void InsertElement(T element)
 	{
