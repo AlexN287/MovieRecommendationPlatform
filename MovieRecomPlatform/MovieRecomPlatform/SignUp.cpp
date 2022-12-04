@@ -1,17 +1,33 @@
 #include "SignUp.h"
 #include"Database.h"
+#include <regex>
 
 SignUp::SignUp() {
 	addUserInDatabase(createUser());
 }
 User SignUp::createUser() {
 	std::cout << "Username: "; std::cin >> m_username;
+
+	std::regex regex_exp("[^a-zA-Z0-9]");
+	std::smatch m;
+	while (std::regex_search(m_username, m, regex_exp)) {
+		std::cout << SignUpStatusToString(SignUp::SignUpStatus::SpecialCharacters);
+		std::cout << "Username: "; std::cin >> m_username;
+	}
+
 	while (existentUsername(m_username)) {
 		std::cout << SignUpStatusToString(SignUp::SignUpStatus::ExistentUser);
 		std::cout << "Username: "; std::cin >> m_username;
 	}
 	std::cout << "Password: "; std::cin >> m_password;
+
+	regex_exp = "^(0[1-9]|[12][0-9]|3[01])[-\/\.](0[1-9]|1[012])[-\/\.](19|20)[0-9][0-9]$";
 	std::cout << "Birthdate: "; std::cin >> m_birthdate;
+	while (!std::regex_match(m_birthdate, regex_exp)) {
+		std::cout << SignUpStatusToString(SignUp::SignUpStatus::InvalidDate);
+		std::cout << "Birthdate: "; std::cin >> m_birthdate;
+	}
+
 	std::cout << "Gender: "; std::cin >> m_gender;
 	User newUser(m_username, m_password, m_birthdate, m_gender);
 	return newUser;
