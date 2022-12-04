@@ -83,7 +83,7 @@ inline auto CreateDatabase()
 		make_table("LikedActors",
 			make_column("userId", &LikedActors::GetUserId, &LikedActors::SetUserId),
 			make_column("actor", &LikedActors::GetActor, &LikedActors::SetActor),
-			foreign_key(&LikedActors::SetUserId).references(&User::GetUserId)),
+			foreign_key(&LikedActors::SetUserId).references(&User::GetUserId))
 	);
 }
 
@@ -95,7 +95,10 @@ class Database
 	void SyncSchema();
 	static Database* instance;
 public:
-	
+	const std::unique_ptr<Storage>& getStorage() {
+		return m_storage;
+	}
+
 	Database(Database&) = delete;
 	void operator=(const Database&) = delete;
 	static Database* GetInstance();

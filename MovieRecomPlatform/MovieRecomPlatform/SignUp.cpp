@@ -5,6 +5,7 @@
 SignUp::SignUp() {
 	addUserInDatabase(createUser());
 }
+
 User SignUp::createUser() {
 	std::cout << "Username: "; std::cin >> m_username;
 
@@ -52,6 +53,18 @@ void SignUp::addUserInDatabase(const User& user) {
 		std::cout << SignUpStatusToString(SignUp::SignUpStatus::Successful);
 	else
 		std::cout << SignUpStatusToString(SignUp::SignUpStatus::Error);
+}
+
+void SignUp::newUserPreferences(const int& userId) {
+	std::string genreName;
+	std::cout << "Give us some of your favourite genres (type 0 to skip): ";
+	std::cin >> genreName;
+	while (genreName != "0") {
+		std::unique_ptr<int> userIdPtr = std::make_unique<int>(userId);
+		LikedGenre lg(std::move(userIdPtr), genreName);
+		Database::GetInstance()->getStorage()->insert(lg);
+		std::cin >> genreName;
+	}
 }
 
 std::string SignUp::SignUpStatusToString(SignUp::SignUpStatus status) {
