@@ -72,10 +72,8 @@ inline auto CreateDatabase()
 			foreign_key(&WatchedList::SetMoviesID).references(&Movies::GetMoviesID)),
 		make_table("LikedGenre",
 			make_column("userId", &LikedGenre::GetUserID, &LikedGenre::SetUserID),
-			make_column("genresId", &LikedGenre::GetGenreID, &LikedGenre::SetGenreID),
-			primary_key(&LikedGenre::GetUserID, &LikedGenre::SetUserID, &LikedGenre::GetGenreID, &LikedGenre::SetGenreID),
-			foreign_key(&LikedGenre::SetUserID).references(&User::GetUserId),
-			foreign_key(&LikedGenre::SetGenreID).references(&Genres::GetGenreId)),
+			make_column("genre", &LikedGenre::GetGenre, &LikedGenre::SetGenre),
+			foreign_key(&LikedGenre::SetUserID).references(&User::GetUserId)),
 		make_table("MovieGenre",
 			make_column("genreId", &MovieGenre::GetGenreId, &MovieGenre::SetGenreId),
 			make_column("moviesId", &MovieGenre::GetMoviesId, &MovieGenre::SetMoviesId),
@@ -84,10 +82,8 @@ inline auto CreateDatabase()
 			foreign_key(&MovieGenre::SetMoviesId).references(&Movies::GetMoviesID)),
 		make_table("LikedActors",
 			make_column("userId", &LikedActors::GetUserId, &LikedActors::SetUserId),
-			make_column("actorId", &LikedActors::GetActorId, &LikedActors::SetActorId),
-			primary_key(&LikedActors::GetUserId, &LikedActors::SetUserId, &LikedActors::GetActorId, &LikedActors::SetActorId),
-			foreign_key(&LikedActors::SetUserId).references(&User::GetUserId),
-			foreign_key(&LikedActors::SetActorId).references(&Actor::GetActorId))
+			make_column("actor", &LikedActors::GetActor, &LikedActors::SetActor),
+			foreign_key(&LikedActors::SetUserId).references(&User::GetUserId)),
 	);
 }
 

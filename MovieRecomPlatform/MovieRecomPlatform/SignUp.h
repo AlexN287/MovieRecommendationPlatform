@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "User.h"
+#include "LikedGenre.h"
 
 class SignUp
 {
@@ -8,6 +9,8 @@ class SignUp
 	{
 		Successful,
 		ExistentUser,
+		SpecialCharacters,
+		InvalidDate,
 		Error
 	};
 
@@ -21,4 +24,6 @@ public:
 	bool existentUsername(const std::string& username);
 	void addUserInDatabase(const User& user);
 	std::string SignUpStatusToString(SignUp::SignUpStatus status);
+
+	void newUserPreferences(const int& userId);
 };

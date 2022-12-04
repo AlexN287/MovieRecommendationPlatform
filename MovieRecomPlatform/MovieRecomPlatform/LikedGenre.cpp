@@ -1,16 +1,16 @@
 #include "LikedGenre.h"
 
-LikedGenre::LikedGenre(std::unique_ptr<int> userId, std::unique_ptr<int> genreId) :
-	m_userID{ std::move(userId) }, m_genreID{ std::move(genreId) } {}
+LikedGenre::LikedGenre(std::unique_ptr<int> userId, std::string genre) :
+	m_userID{ std::move(userId) }, m_genre{ genre } {}
 
 const std::unique_ptr<int>& LikedGenre::GetUserID() const
 {
 	return m_userID;
 }
 
-const std::unique_ptr<int>& LikedGenre::GetGenreID() const
+std::string LikedGenre::GetGenre() const
 {
-	return m_genreID;
+	return m_genre;
 }
 
 void LikedGenre::SetUserID(std::unique_ptr<int> userID)
@@ -18,7 +18,7 @@ void LikedGenre::SetUserID(std::unique_ptr<int> userID)
 	m_userID = std::move(userID);
 }
 
-void LikedGenre::SetGenreID(std::unique_ptr<int> genreID)
+void LikedGenre::SetGenre(std::string genre)
 {
-	m_genreID = std::move(genreID);
+	this->m_genre = genre;
 }

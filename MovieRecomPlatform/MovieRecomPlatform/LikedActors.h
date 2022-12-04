@@ -1,19 +1,20 @@
 #pragma once
 #include <memory>
+#include <string>
 
 class LikedActors
 {
 private:
 	std::unique_ptr<int> m_userId;
-	std::unique_ptr<int> m_actorId;
+	std::string m_actor;
 public:
 	LikedActors() = default;
-	LikedActors(std::unique_ptr<int> userId, std::unique_ptr<int>actorId);
+	LikedActors(std::unique_ptr<int> userId, std::string actor);
 	~LikedActors() = default;
 
-	const std::unique_ptr<int>& GetActorId() const;
+	std::string GetActor() const;
 	const std::unique_ptr<int>& GetUserId() const;
-	void SetActorId(std::unique_ptr<int> actorId);
+	void SetActor(std::string actor);
 	void SetUserId(std::unique_ptr<int> userId);
 };
 
