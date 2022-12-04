@@ -71,6 +71,18 @@ void SignUp::newUserPreferences(const int& userId) {
 		}
 		std::getline(std::cin, genreName);
 	}
+	
+	std::string actorName;
+	std::cout << "Give us some of your favourite actors (type 0 to skip): ";
+	std::getline(std::cin, actorName);
+	while (actorName != "0") {
+		if (!actorName.empty()) {
+			std::unique_ptr<int> userIdPtr = std::make_unique<int>(userId);
+			LikedActors la(std::move(userIdPtr), actorName);
+			Database::GetInstance()->getStorage()->insert(la);
+		}
+		std::getline(std::cin, actorName);
+	}
 }
 
 std::string SignUp::SignUpStatusToString(SignUp::SignUpStatus status) {

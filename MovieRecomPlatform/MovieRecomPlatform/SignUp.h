@@ -2,6 +2,7 @@
 #include <iostream>
 #include "User.h"
 #include "LikedGenre.h"
+#include "LikedActors.h"
 
 class SignUp
 {
