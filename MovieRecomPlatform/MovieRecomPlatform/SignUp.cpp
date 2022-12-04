@@ -3,7 +3,11 @@
 #include <regex>
 
 SignUp::SignUp() {
-	addUserInDatabase(createUser());
+	User user = createUser();
+	addUserInDatabase(user);
+	for (User u : Database::GetInstance()->GetElements<User>())
+		if (u.GetUsername() == user.GetUsername())
+			newUserPreferences(u.GetUserId());
 }
 
 User SignUp::createUser() {
@@ -58,12 +62,14 @@ void SignUp::addUserInDatabase(const User& user) {
 void SignUp::newUserPreferences(const int& userId) {
 	std::string genreName;
 	std::cout << "Give us some of your favourite genres (type 0 to skip): ";
-	std::cin >> genreName;
+	std::getline(std::cin, genreName);
 	while (genreName != "0") {
-		std::unique_ptr<int> userIdPtr = std::make_unique<int>(userId);
-		LikedGenre lg(std::move(userIdPtr), genreName);
-		Database::GetInstance()->getStorage()->insert(lg);
-		std::cin >> genreName;
+		if (!genreName.empty()) {
+			std::unique_ptr<int> userIdPtr = std::make_unique<int>(userId);
+			LikedGenre lg(std::move(userIdPtr), genreName);
+			Database::GetInstance()->getStorage()->insert(lg);
+		}
+		std::getline(std::cin, genreName);
 	}
 }
 
@@ -74,6 +80,10 @@ std::string SignUp::SignUpStatusToString(SignUp::SignUpStatus status) {
 		return "Successful\n";
 	case SignUp::SignUpStatus::ExistentUser:
 		return "The username is already used\n";
+	case SignUp::SignUpStatus::SpecialCharacters:
+		return "It can not contain special characters\n";
+	case SignUp::SignUpStatus::InvalidDate:
+		return "Incorrect date format\n";
 	case SignUp::SignUpStatus::Error:
 		return "Error\n";
 	default:
