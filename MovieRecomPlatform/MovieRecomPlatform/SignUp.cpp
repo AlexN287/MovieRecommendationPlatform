@@ -67,7 +67,8 @@ void SignUp::newUserPreferences(const int& userId) {
 		if (!genreName.empty()) {
 			std::unique_ptr<int> userIdPtr = std::make_unique<int>(userId);
 			LikedGenre lg(std::move(userIdPtr), genreName);
-			Database::GetInstance()->getStorage()->insert(lg);
+			//Database::GetInstance()->getStorage()->insert(lg);
+			Database::GetInstance()->InsertForeignKey(lg);
 		}
 		std::getline(std::cin, genreName);
 	}
@@ -79,7 +80,8 @@ void SignUp::newUserPreferences(const int& userId) {
 		if (!actorName.empty()) {
 			std::unique_ptr<int> userIdPtr = std::make_unique<int>(userId);
 			LikedActors la(std::move(userIdPtr), actorName);
-			Database::GetInstance()->getStorage()->insert(la);
+			//Database::GetInstance()->getStorage()->insert(la);
+			Database::GetInstance()->InsertForeignKey(la);
 		}
 		std::getline(std::cin, actorName);
 	}

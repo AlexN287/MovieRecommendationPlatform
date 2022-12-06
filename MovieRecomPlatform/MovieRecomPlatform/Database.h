@@ -112,6 +112,12 @@ public:
 	}
 
 	template<class T>
+	static void InsertForeignKey(T& element)
+	{
+		instance->m_storage->insert(element);
+	}
+
+	template<class T>
 	static void RemoveElement(T element)
 	{
 		instance->m_storage->remove(element);
