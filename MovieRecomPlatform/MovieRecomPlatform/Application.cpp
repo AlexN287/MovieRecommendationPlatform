@@ -8,45 +8,33 @@
 
 int min(int x, int y, int z) { return std::min(std::min(x, y), z); }
 
-int editDist(std::string str1, std::string str2, int m, int n)
+int editDist(std::string str1, std::string str2, int str1Size, int str2Size)
 {
-    // Create a table to store results of subproblems
-    int** dp = new int*[m+1];
+    int** dp = new int*[str1Size+1];
 
-    for (int i = 0; i < m+1; i++) {
-        dp[i] = new int[n+1];
+    for (int i = 0; i < str1Size +1; i++) {
+        dp[i] = new int[str2Size +1];
     }
 
-    // Fill d[][] in bottom up manner
-    for (int i = 0; i <= m; i++) {
-        for (int j = 0; j <= n; j++) {
-            // If first string is empty, only option is to
-            // insert all characters of second string
+    for (int i = 0; i <= str1Size; i++) {
+        for (int j = 0; j <= str2Size; j++) {
             if (i == 0)
-                dp[i][j] = j; // Min. operations = j
-
-            // If second string is empty, only option is to
-            // remove all characters of second string
+                dp[i][j] = j; 
             else if (j == 0)
-                dp[i][j] = i; // Min. operations = i
-
-            // If last characters are same, ignore last char
-            // and recur for remaining string
+                dp[i][j] = i; 
             else if (str1[i - 1] == str2[j - 1])
                 dp[i][j] = dp[i - 1][j - 1];
 
-            // If the last character is different, consider
-            // all possibilities and find the minimum
             else
                 dp[i][j]
                 = 1
-                + min(dp[i][j - 1], // Insert
-                    dp[i - 1][j], // Remove
-                    dp[i - 1][j - 1]); // Replace
+                + min(dp[i][j - 1], 
+                    dp[i - 1][j], 
+                    dp[i - 1][j - 1]); 
         }
     }
 
-    return dp[m][n];
+    return dp[str1Size][str2Size];
 }
 
 void toLower(std::string& str)
@@ -61,41 +49,6 @@ void removeSpaces(std::string& str)
         [](char c) {
             return std::isspace(static_cast<unsigned char>(c));
         }));
-}
-
-void Application::SearchMovie(std::string movieName)
-{
-    auto moviesList = Database::GetInstance()->GetElements<Movies>();
-    std::vector<Movies> foundMovies;
-
-    toLower(movieName);
-    removeSpaces(movieName);
-
-    for (int i = 0; i < moviesList.size(); i++)
-    {
-        std::string title = moviesList[i].GetTitle();;
-        toLower(title);
-        removeSpaces(title);
-       
-        if(findSubString(title,movieName))
-            foundMovies.push_back(moviesList[i]);
-    }
-
-    if (foundMovies.size()<=1)
-    {
-        for (int i = 0; i < moviesList.size(); i++)
-        {
-            std::string title = moviesList[i].GetTitle();
-            toLower(title);
-            removeSpaces(title);
-
-            if (editDist(title, movieName, title.size(), movieName.size()) < 2)
-                foundMovies.push_back(moviesList[i]);
-        }
-    }
-    for (int i = 0; i < foundMovies.size(); i++)
-        std::cout << foundMovies[i].GetTitle() << '\n';
-   // return foundMovies;
 }
 
 bool Application::findSubString(std::string string, const std::string& subString)
