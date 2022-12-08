@@ -1,7 +1,7 @@
-#include "Database.h"
+﻿#include "Database.h"
 #include "Login.h"
 #include "SignUp.h"
-//#include "Application.h"
+#include "Application.h"
 #include <iostream>
 
 int main()
@@ -71,6 +71,8 @@ int main()
 
 	//Login firstLog(username, password);
 
-	SignUp();
+	//SignUp();
 	//Database::GetInstance()->PopulateMovies("netflix_titles.csv");
+	Application a;
+	a.SearchMovie("jaws");
 }
