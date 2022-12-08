@@ -51,6 +51,41 @@ void removeSpaces(std::string& str)
         }));
 }
 
+void Application::SearchMovie(std::string movieName)
+{
+    auto moviesList = Database::GetInstance()->GetElements<Movies>();
+    std::vector<Movies> foundMovies;
+
+    toLower(movieName);
+    removeSpaces(movieName);
+
+    for (int i = 0; i < moviesList.size(); i++)
+    {
+        std::string title = moviesList[i].GetTitle();;
+        toLower(title);
+        removeSpaces(title);
+
+        if (findSubString(title, movieName))
+            foundMovies.push_back(moviesList[i]);
+    }
+
+    if (foundMovies.size() <= 1)
+    {
+        for (int i = 0; i < moviesList.size(); i++)
+        {
+            std::string title = moviesList[i].GetTitle();
+            toLower(title);
+            removeSpaces(title);
+
+            if (editDist(title, movieName, title.size(), movieName.size()) < 2)
+                foundMovies.push_back(moviesList[i]);
+        }
+    }
+    for (int i = 0; i < foundMovies.size(); i++)
+        std::cout << foundMovies[i].GetTitle() << '\n';
+    // return foundMovies;
+}
+
 bool Application::findSubString(std::string string, const std::string& subString)
 {
     auto it = std::search(
