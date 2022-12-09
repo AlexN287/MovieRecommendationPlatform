@@ -95,9 +95,9 @@ class Database
 	void SyncSchema();
 	static Database* instance;
 public:
-	const std::unique_ptr<Storage>& getStorage() {
+	/*const std::unique_ptr<Storage>& getStorage() {
 		return m_storage;
-	}
+	}*/
 
 	Database(Database&) = delete;
 	void operator=(const Database&) = delete;
@@ -105,14 +105,9 @@ public:
 	static void PopulateMovies(const std::string& fileName);
 	static void PopulateActors(const std::string& fileName);
 	static void PopulateGenres(const std::string& fileName);
-	template<class T>
-	static void InsertElement(T element)
-	{
-		instance->m_storage->insert(element);
-	}
 
 	template<class T>
-	static void InsertForeignKey(T& element)
+	static void InsertElement(const T& element)
 	{
 		instance->m_storage->insert(element);
 	}

@@ -152,6 +152,7 @@
     <ClCompile Include="MovieActor.cpp" />
     <ClCompile Include="MovieGenre.cpp" />
     <ClCompile Include="Movies.cpp" />
+    <ClCompile Include="Recommandation.cpp" />
     <ClCompile Include="SignUp.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserRating.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="MovieActor.h" />
     <ClInclude Include="MovieGenre.h" />
     <ClInclude Include="Movies.h" />
+    <ClInclude Include="Recommandation.h" />
     <ClInclude Include="SignUp.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserRating.h" />
