@@ -12,8 +12,8 @@ public:
 
 	const std::unique_ptr<int>& GetUserID() const;
 	const std::unique_ptr<int>& GetMoviesID() const;
-	void SetUserID(std::unique_ptr<int> userID);
-	void SetMoviesID(std::unique_ptr<int> moviesID);
+	void SetUserID(std::unique_ptr<int> userId);
+	void SetMoviesID(std::unique_ptr<int> movieId);
 
 };
 
