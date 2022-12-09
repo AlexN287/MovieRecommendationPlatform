@@ -11,9 +11,9 @@ public:
 	~Recommandation() = default;
 
 	const std::unique_ptr<int>& GetUserID() const;
-	const std::unique_ptr<int>& GetMoviesID() const;
+	const std::unique_ptr<int>& GetMovieID() const;
 	void SetUserID(std::unique_ptr<int> userId);
-	void SetMoviesID(std::unique_ptr<int> movieId);
+	void SetMovieID(std::unique_ptr<int> movieId);
 
 };
 

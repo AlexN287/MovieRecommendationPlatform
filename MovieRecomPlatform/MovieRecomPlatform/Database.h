@@ -11,6 +11,7 @@
 #include "MovieGenre.h"
 #include "User.h"
 #include "LikedActors.h"
+#include "Recommandation.h"
 #include <memory>
 #include<fstream>
 #include<iostream>
@@ -83,7 +84,13 @@ inline auto CreateDatabase()
 		make_table("LikedActors",
 			make_column("userId", &LikedActors::GetUserId, &LikedActors::SetUserId),
 			make_column("actor", &LikedActors::GetActor, &LikedActors::SetActor),
-			foreign_key(&LikedActors::SetUserId).references(&User::GetUserId))
+			foreign_key(&LikedActors::SetUserId).references(&User::GetUserId)),
+		make_table("Recommandation",
+			make_column("userId", &Recommandation::GetUserID, &Recommandation::SetUserID),
+			make_column("movieId", &Recommandation::GetMovieID, &Recommandation::SetMovieID),
+			primary_key(&Recommandation::GetUserID, &Recommandation::GetUserID, &Recommandation::GetMovieID, &Recommandation::GetMovieID),
+			foreign_key(&Recommandation::SetUserID).references(&User::GetUserId),
+			foreign_key(&Recommandation::SetMovieID).references(&Movies::GetMoviesID))
 	);
 }
 
