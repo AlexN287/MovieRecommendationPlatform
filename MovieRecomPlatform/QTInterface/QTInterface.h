@@ -11,6 +11,9 @@ public:
     QTInterface(QWidget *parent = nullptr);
     ~QTInterface();
 
+private slots:
+    void on_pushButton_login_clicked();
+
 private:
     Ui::QTInterfaceClass ui;
 };
