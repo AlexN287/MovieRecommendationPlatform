@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MovieRecomPlatform", "MovieRecomPlatform\MovieRecomPlatform.vcxproj", "{1CF55F51-087D-4D07-90F8-68C8FF0441B4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QTInterface", "QTInterface\QTInterface.vcxproj", "{594C3023-D99B-410F-840C-0856C0CFEB9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,12 @@ Global
 		{1CF55F51-087D-4D07-90F8-68C8FF0441B4}.Release|x64.Build.0 = Release|x64
 		{1CF55F51-087D-4D07-90F8-68C8FF0441B4}.Release|x86.ActiveCfg = Release|Win32
 		{1CF55F51-087D-4D07-90F8-68C8FF0441B4}.Release|x86.Build.0 = Release|Win32
+		{594C3023-D99B-410F-840C-0856C0CFEB9B}.Debug|x64.ActiveCfg = Debug|x64
+		{594C3023-D99B-410F-840C-0856C0CFEB9B}.Debug|x64.Build.0 = Debug|x64
+		{594C3023-D99B-410F-840C-0856C0CFEB9B}.Debug|x86.ActiveCfg = Debug|x64
+		{594C3023-D99B-410F-840C-0856C0CFEB9B}.Release|x64.ActiveCfg = Release|x64
+		{594C3023-D99B-410F-840C-0856C0CFEB9B}.Release|x64.Build.0 = Release|x64
+		{594C3023-D99B-410F-840C-0856C0CFEB9B}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
