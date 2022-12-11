@@ -5,6 +5,7 @@
 #include<iostream>
 #include<math.h>
 #include<string>
+#include <vector>
 
 int min(int x, int y, int z) { return std::min(std::min(x, y), z); }
 
@@ -48,7 +49,24 @@ void removeSpaces(std::string& str)
     str.erase(std::remove_if(str.begin(), str.end(),
         [](char c) {
             return std::isspace(static_cast<unsigned char>(c));
-        }));
+        }), str.end());
+}
+
+void removeCharacters(std::string& str)
+{
+    str.erase(std::remove_if(str.begin(), str.end(), 
+        [](char c) { return !isalnum(static_cast<unsigned char>(c)); }), str.end());
+}
+
+bool hasOnlyAlphaNum(const std::string& str)
+{
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (static_cast<unsigned char>(str[i]) > 127)
+            return false;
+    }
+
+    return true;
 }
 
 void Application::SearchMovie(std::string movieName)
@@ -58,29 +76,49 @@ void Application::SearchMovie(std::string movieName)
 
     toLower(movieName);
     removeSpaces(movieName);
+    removeCharacters(movieName);
 
     for (int i = 0; i < moviesList.size(); i++)
     {
-        std::string title = moviesList[i].GetTitle();;
+        std::string title = moviesList[i].GetTitle();
         toLower(title);
         removeSpaces(title);
+        removeCharacters(title);
 
-        if (findSubString(title, movieName))
-            foundMovies.push_back(moviesList[i]);
-    }
-
-    if (foundMovies.size() <= 1)
-    {
-        for (int i = 0; i < moviesList.size(); i++)
+        if (editDist(title, movieName, title.size(), movieName.size()) < 3)
         {
-            std::string title = moviesList[i].GetTitle();
-            toLower(title);
-            removeSpaces(title);
-
-            if (editDist(title, movieName, title.size(), movieName.size()) < 2)
+            if(hasOnlyAlphaNum(moviesList[i].GetTitle()))
                 foundMovies.push_back(moviesList[i]);
         }
+                
     }
+    auto initial = foundMovies;
+    if(!initial.empty())
+        for (int i = 0; i < initial.size(); i++)
+        {
+            std::string foundMovie = initial[i].GetTitle();
+            toLower(foundMovie);
+            removeSpaces(foundMovie);
+            removeCharacters(foundMovie);
+
+            for (int j = 0; j < moviesList.size(); j++)
+            { 
+                std::string title = moviesList[j].GetTitle();
+              
+                toLower(title);
+                removeSpaces(title);
+                removeCharacters(title);
+
+                if (findSubString(title, foundMovie))
+                    if (hasOnlyAlphaNum(moviesList[j].GetTitle())) //TODO
+                    { 
+                      foundMovies.push_back(moviesList[j]);
+                      //std::cout << moviesList[j].GetTitle() << "\n";
+                    }
+                       
+            }
+           
+        }
     for (int i = 0; i < foundMovies.size(); i++)
         std::cout << foundMovies[i].GetTitle() << '\n';
     // return foundMovies;
