@@ -1,6 +1,4 @@
 #include "Application.h"
-#include "Database.h"
-#include"Movies.h"
 #include <algorithm>
 #include<iostream>
 #include<math.h>
@@ -124,7 +122,7 @@ void Application::SearchMovie(std::string movieName)
     // return foundMovies;
 }
 
-bool Application::findSubString(std::string string, const std::string& subString)
+bool findSubString(std::string string, const std::string& subString)
 {
     auto it = std::search(
         string.begin(), string.end(),
@@ -216,4 +214,11 @@ std::string Application::SearchStatusToString(Application::SearchStatus searchSt
         return "Error";
         break;
     }
+}
+
+void Application::AddToWishList(User user, Movies movie)
+{
+    std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
+    std::unique_ptr<int> movieIdPtr = std::make_unique<int>(movie.GetMoviesID());
+    Database::GetInstance()->InsertElement(Wishlist(std::move(userIdPtr), std::move(movieIdPtr)));
 }

@@ -77,7 +77,6 @@ int main()
 	a.SearchMovie("taruto");*/
 
 	//Database::GetInstance()->InsertElement(User("Marcel", "Password2", "10.11.2001", "Female"));
-	Database::GetInstance()->PopulateGenres();
-
-
+    //Database::GetInstance()->PopulateMovies("netflix_titles.csv");
+	//Database::GetInstance()->PopulateGenres();
 }

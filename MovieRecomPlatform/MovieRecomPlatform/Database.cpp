@@ -54,66 +54,19 @@ std::vector<std::string> splitComma(const std::string& str, const std::string& d
 	return result;
 }
 
-
-void Database::PopulateMovies(const std::string& fileName)
-{
-	std::ifstream in(fileName);
-
-	std::string str;
-	std::set<std::string> genres;
-	std::set<std::string> cast;
-	std::vector<Movies> movies;
-	std::string delim = ",";
-	std::getline(in,str);
-	while (getline(in, str))
-	{
-		std::cout << str << "\n";
-		
-		std::vector<std::string> result = split(str);
-
-		Database::GetInstance()->InsertElement(Movies(result[1], result[2], result[3], result[4], result[5], result[6],
-			result[7], result[8], result[9], result[10], result[11]));
-
-
-		std::cout << "Now actors: " << "\n";
-		std::cout << "\n";
-		std::vector<std::string> currentCast = splitComma(result[3], delim);
-
-		for (int i = 0; i < currentCast.size(); i++)
-		{
-			std::cout << currentCast[i] << "\n";
-			cast.insert(currentCast[i]);
-		}
-	}
-
-	for (auto it : genres)
-	{
-		Database::GetInstance()->InsertElement(Genres(it));
-	}
-
-	for (auto it : cast)
-	{
-		Database::GetInstance()->InsertElement(Actor(it));
-	}
-}
-
-void Database::PopulateActors()
-{
-
-}
 void Database::PopulateGenres()
 {
 	auto movies = Database::GetInstance()->GetElements<Movies>();
 	std::string delim = ",";
 	std::set<std::string> genres;
-	
+
 
 	for (int i = 0; i < movies.size(); i++)
 	{
 		std::vector<std::string> current = splitComma(movies[i].GetGenres(), delim);
 		for (int j = 0; j < current.size(); j++)
 		{
-			
+
 			std::cout << current[j] << "\n";
 			genres.insert(current[j]);
 
@@ -126,4 +79,24 @@ void Database::PopulateGenres()
 	}
 
 }
+
+
+void Database::PopulateMovies(const std::string& fileName)
+{
+	std::ifstream in(fileName);
+	std::string str;
+	std::vector<Movies> movies;
+	std::getline(in,str);
+	while (getline(in, str))
+	{
+		std::cout << str << "\n";
+		
+		std::vector<std::string> result = split(str);
+
+		Database::GetInstance()->InsertElement(Movies(result[1], result[2], result[3], result[4], result[5], result[6],
+			result[7], result[8], result[9], result[10], result[11]));
+	}
+
+}
+
 

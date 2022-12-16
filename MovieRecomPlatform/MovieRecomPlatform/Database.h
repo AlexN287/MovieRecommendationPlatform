@@ -111,7 +111,6 @@ public:
 	void operator=(const Database&) = delete;
 	static Database* GetInstance();
 	static void PopulateMovies(const std::string& fileName);
-	static void PopulateActors();
 	static void PopulateGenres();
 
 	template<class T>
