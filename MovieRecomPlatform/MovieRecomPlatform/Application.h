@@ -19,8 +19,8 @@ public:
 	void SearchMovie(std::string movieName);
 	void ShowMovie(std::string movieName); //TODO
 	void AddToWishList(User user, Movies movie);
-	void AddToWatchedList(User user, std::string moveName);
-	void GiveRating(User user, std::string movieName);
+	void AddToWatchedList(User user, Movies movie);
+	void GiveRating(User user, Movies movie);
 
 private:
 	std::string SearchStatusToString(Application::SearchStatus searchStatus);

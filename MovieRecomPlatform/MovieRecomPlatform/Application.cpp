@@ -222,3 +222,20 @@ void Application::AddToWishList(User user, Movies movie)
     std::unique_ptr<int> movieIdPtr = std::make_unique<int>(movie.GetMoviesID());
     Database::GetInstance()->InsertElement(Wishlist(std::move(userIdPtr), std::move(movieIdPtr)));
 }
+
+void Application::AddToWatchedList(User user, Movies movie)
+{
+    std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
+    std::unique_ptr<int> movieIdPtr = std::make_unique<int>(movie.GetMoviesID());
+    Database::GetInstance()->InsertElement(WatchedList(std::move(userIdPtr), std::move(movieIdPtr)));
+}
+
+void Application::GiveRating(User user, Movies movie)
+{
+    std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
+    std::unique_ptr<int> movieIdPtr = std::make_unique<int>(movie.GetMoviesID());
+    std::cout << "Give rating from 1-5" << "\n";
+    int rating;
+    std::cin >> rating;
+    Database::GetInstance()->InsertElement(UserRating(std::move(userIdPtr), std::move(movieIdPtr), rating));
+}
