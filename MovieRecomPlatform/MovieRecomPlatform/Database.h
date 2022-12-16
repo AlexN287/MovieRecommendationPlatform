@@ -15,6 +15,7 @@
 #include <memory>
 #include<fstream>
 #include<iostream>
+#include <set>
 
 inline auto CreateDatabase()
 {
@@ -110,8 +111,8 @@ public:
 	void operator=(const Database&) = delete;
 	static Database* GetInstance();
 	static void PopulateMovies(const std::string& fileName);
-	static void PopulateActors(const std::string& fileName);
-	static void PopulateGenres(const std::string& fileName);
+	static void PopulateActors();
+	static void PopulateGenres();
 
 	template<class T>
 	static void InsertElement(const T& element)

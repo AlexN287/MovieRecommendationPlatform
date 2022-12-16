@@ -1,7 +1,7 @@
 #include "Genres.h"
 
-Genres::Genres(int genreId, std::string name) :
-	m_genreId{ genreId },
+Genres::Genres(std::string name) :
+	m_genreId{ 0 },
 	m_name{ name }
 {
 }

@@ -1,7 +1,7 @@
 #include "Actor.h"
 
-Actor::Actor(int actorId, std::string fullName) :
-	m_actorId{ actorId }, m_fullName{ fullName }{}
+Actor::Actor(std::string fullName) :
+	m_actorId{ 0 }, m_fullName{ fullName }{}
 
 int Actor::GetActorId() const {
 	return this->m_actorId;

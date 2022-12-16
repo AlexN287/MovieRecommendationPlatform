@@ -6,7 +6,7 @@ class Actor
 	std::string m_fullName;
 public:
 	Actor() = default;
-	Actor(int actorId, std::string fullName);
+	Actor(std::string fullName);
 	Actor(const Actor& actor) = default;
 	~Actor() = default;
 

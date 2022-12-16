@@ -8,7 +8,7 @@ private:
 
 public:
 	Genres() = default;
-	Genres(int genreId, std::string name);
+	Genres(std::string name);
 	Genres(const Genres& genres) = default;
 	~Genres() = default;
 

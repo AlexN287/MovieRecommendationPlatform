@@ -39,14 +39,31 @@ std::vector<std::string> split(const std::string& s)
 	return splitted;
 }
 
+std::vector<std::string> splitComma(const std::string& str, const std::string& delim)
+{
+	std::vector<std::string> result;
+	size_t startIndex = 0;
+
+	for (size_t found = str.find(delim); found != std::string::npos; found = str.find(delim, startIndex))
+	{
+		result.emplace_back(str.begin() + startIndex, str.begin() + found);
+		startIndex = found + delim.size();
+	}
+	if (startIndex != str.size())
+		result.emplace_back(str.begin() + startIndex, str.end());
+	return result;
+}
+
+
 void Database::PopulateMovies(const std::string& fileName)
 {
 	std::ifstream in(fileName);
 
 	std::string str;
-
-	const std::string delim{ "," };
+	std::set<std::string> genres;
+	std::set<std::string> cast;
 	std::vector<Movies> movies;
+	std::string delim = ",";
 	std::getline(in,str);
 	while (getline(in, str))
 	{
@@ -56,11 +73,57 @@ void Database::PopulateMovies(const std::string& fileName)
 
 		Database::GetInstance()->InsertElement(Movies(result[1], result[2], result[3], result[4], result[5], result[6],
 			result[7], result[8], result[9], result[10], result[11]));
-		
+
+
+		std::cout << "Now actors: " << "\n";
+		std::cout << "\n";
+		std::vector<std::string> currentCast = splitComma(result[3], delim);
+
+		for (int i = 0; i < currentCast.size(); i++)
+		{
+			std::cout << currentCast[i] << "\n";
+			cast.insert(currentCast[i]);
+		}
+	}
+
+	for (auto it : genres)
+	{
+		Database::GetInstance()->InsertElement(Genres(it));
+	}
+
+	for (auto it : cast)
+	{
+		Database::GetInstance()->InsertElement(Actor(it));
 	}
 }
 
-void Database::PopulateActors(const std::string& fileName)
+void Database::PopulateActors()
 {
+
+}
+void Database::PopulateGenres()
+{
+	auto movies = Database::GetInstance()->GetElements<Movies>();
+	std::string delim = ",";
+	std::set<std::string> genres;
+	
+
+	for (int i = 0; i < movies.size(); i++)
+	{
+		std::vector<std::string> current = splitComma(movies[i].GetGenres(), delim);
+		for (int j = 0; j < current.size(); j++)
+		{
+			
+			std::cout << current[j] << "\n";
+			genres.insert(current[j]);
+
+		}
+	}
+
+	for (auto& it : genres)
+	{
+		Database::GetInstance()->InsertElement(Genres(it));
+	}
+
 }
 
