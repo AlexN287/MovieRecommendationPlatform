@@ -15,13 +15,15 @@ void QTInterface::on_pushButton_login_clicked()
     std::string username = ui.lineEdit_username->text().toStdString();
     std::string password = ui.lineEdit_password->text().toStdString();
     if (username == "test" && password == "test") {
-        //QMessageBox::information(this, "Login", "da");
-        ui.stackedWidget->setCurrentIndex(1);
+        QMessageBox::information(this, "Login", "da");
     }
     else
     {
         QMessageBox::warning(this, "Login", "nu");
     }
+}
+void QTInterface::on_pushButton_signUp_clicked() {
+    ui.stackedWidget->setCurrentIndex(1);
 }
 void QTInterface::on_checkBox_male_stateChanged(int arg) {
     if (arg != 0)
