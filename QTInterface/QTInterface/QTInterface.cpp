@@ -23,3 +23,11 @@ void QTInterface::on_pushButton_login_clicked()
         QMessageBox::warning(this, "Login", "nu");
     }
 }
+void QTInterface::on_checkBox_male_stateChanged(int arg) {
+    if (arg != 0)
+        ui.checkBox_female->setChecked(0);
+}
+void QTInterface::on_checkBox_female_stateChanged(int arg) {
+    if (arg != 0)
+        ui.checkBox_male->setChecked(0);
+}
