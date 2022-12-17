@@ -8,7 +8,7 @@ class QTInterface : public QMainWindow
     Q_OBJECT
 
 public:
-    QTInterface(QWidget *parent = nullptr);
+    QTInterface(QWidget* parent = nullptr);
     ~QTInterface();
 
 private slots:
@@ -17,3 +17,4 @@ private slots:
 private:
     Ui::QTInterfaceClass ui;
 };
+
