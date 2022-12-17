@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Database.h"
 class Login
 {
 	enum class LoginStatus
@@ -15,13 +16,16 @@ private:
 
 public:
 	Login(const std::string& username, const std::string& password);
+	Login(const Login& login);
+	Login& operator=(const Login& login);
 
 	void SetUsername(const std::string& username);
 	std::string GetUsername() const;
 	void SetPassword(const std::string& password);
 	std::string GetPassword() const;
 	std::string LoginStatusToString(Login::LoginStatus loginStatus);
-	inline auto checkUser();
-	void showUser();
+	bool checkUser(const User& user);
+	User getUser();
+	void showUser(const User& user);
 };
 

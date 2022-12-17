@@ -5,6 +5,8 @@
 #include "Database.h"
 #include "Movies.h"
 #include "User.h"
+#include "Login.h"
+#include "SignUp.h"
 
 class Application
 {
@@ -15,12 +17,14 @@ class Application
 	};
 
 public:
-	Application() = default;
+	Application();
 	void SearchMovie(std::string movieName);
 	void ShowMovie(std::string movieName); //TODO
-	void AddToWishList(User user, Movies movie);
-	void AddToWatchedList(User user, Movies movie);
-	void GiveRating(User user, Movies movie);
+	void AddToWishList(const User& user, const Movies& movie);
+	void AddToWatchedList(const User& user, const Movies& movie);
+	void GiveRating(const User& user,const Movies& movie);
+	Movies SelectMovie();
+
 
 private:
 	std::string SearchStatusToString(Application::SearchStatus searchStatus);

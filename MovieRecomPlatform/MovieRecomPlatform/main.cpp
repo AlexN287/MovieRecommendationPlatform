@@ -73,8 +73,8 @@ int main()
 
 	//SignUp();
 	//Database::GetInstance()->PopulateMovies("netflix_titles.csv");
-	/*Application a;
-	a.SearchMovie("taruto");*/
+	Application a;
+	//a.SearchMovie("taruto");
 
 	//Database::GetInstance()->InsertElement(User("Marcel", "Password2", "10.11.2001", "Female"));
     //Database::GetInstance()->PopulateMovies("netflix_titles.csv");

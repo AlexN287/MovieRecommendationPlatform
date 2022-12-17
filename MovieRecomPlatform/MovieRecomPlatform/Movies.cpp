@@ -18,6 +18,22 @@ Movies::Movies(std::string type, std::string title, std::string director, std::s
 {
 }
 
+//Movies::Movies(const Movies& movies)
+//{
+//	m_moviesId = movies.m_moviesId;
+//	m_type = movies.m_type;
+//	m_title = movies.m_title;
+//	m_director = movies.m_director;
+//	m_cast = movies.m_cast;
+//	m_country = movies.m_country;
+//	m_dateAdded = movies.m_dateAdded;
+//	m_releaseYear = movies.m_releaseYear;
+//	m_rating = movies.m_rating;
+//	m_duration = movies.m_duration;
+//	m_genres = movies.m_genres;
+//	m_description = movies.m_description;
+//}
+
 int Movies::GetMoviesID() const
 {
 	return m_moviesId;

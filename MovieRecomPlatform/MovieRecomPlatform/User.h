@@ -13,7 +13,7 @@ public:
 
 	User() = default;
 	User(const std::string& username,const std::string& password,const std::string& birthdate,const std::string& gender);
-	User(const User& user) = default;
+	User(const User& user)=default;
 	~User() = default;
 	int GetUserId() const;
 	std::string GetUsername() const;

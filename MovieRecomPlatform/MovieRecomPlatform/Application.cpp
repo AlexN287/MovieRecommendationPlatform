@@ -5,6 +5,17 @@
 #include<string>
 #include <vector>
 
+Application::Application()
+{
+   
+}
+
+Movies Application::SelectMovie()
+{
+    auto movies = Database::GetInstance()->GetElements<Movies>();
+    return movies[0];
+}
+
 int min(int x, int y, int z) { return std::min(std::min(x, y), z); }
 
 int editDist(std::string str1, std::string str2, int str1Size, int str2Size)
@@ -67,6 +78,15 @@ bool hasOnlyAlphaNum(const std::string& str)
     return true;
 }
 
+bool findSubString(std::string string, const std::string& subString)
+{
+    auto it = std::search(
+        string.begin(), string.end(),
+        subString.begin(), subString.end()
+    );
+    return (it == string.begin());
+}
+
 void Application::SearchMovie(std::string movieName)
 {
     auto moviesList = Database::GetInstance()->GetElements<Movies>();
@@ -120,15 +140,6 @@ void Application::SearchMovie(std::string movieName)
     for (int i = 0; i < foundMovies.size(); i++)
         std::cout << foundMovies[i].GetTitle() << '\n';
     // return foundMovies;
-}
-
-bool findSubString(std::string string, const std::string& subString)
-{
-    auto it = std::search(
-        string.begin(), string.end(),
-        subString.begin(), subString.end()
-    );
-    return (it==string.begin());
 }
 
 //void Application::ShowMovie(std::string movieName)
@@ -216,21 +227,21 @@ std::string Application::SearchStatusToString(Application::SearchStatus searchSt
     }
 }
 
-void Application::AddToWishList(User user, Movies movie)
+void Application::AddToWishList(const User& user, const Movies& movie)
 {
     std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
     std::unique_ptr<int> movieIdPtr = std::make_unique<int>(movie.GetMoviesID());
     Database::GetInstance()->InsertElement(Wishlist(std::move(userIdPtr), std::move(movieIdPtr)));
 }
 
-void Application::AddToWatchedList(User user, Movies movie)
+void Application::AddToWatchedList(const User& user, const Movies& movie)
 {
     std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
     std::unique_ptr<int> movieIdPtr = std::make_unique<int>(movie.GetMoviesID());
     Database::GetInstance()->InsertElement(WatchedList(std::move(userIdPtr), std::move(movieIdPtr)));
 }
 
-void Application::GiveRating(User user, Movies movie)
+void Application::GiveRating(const User& user, const Movies& movie)
 {
     std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
     std::unique_ptr<int> movieIdPtr = std::make_unique<int>(movie.GetMoviesID());

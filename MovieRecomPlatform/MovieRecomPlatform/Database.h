@@ -1,3 +1,4 @@
+#pragma once
 #include "User.h"
 #include <sqlite_orm/sqlite_orm.h>
 #include "Genres.h"
@@ -47,7 +48,7 @@ inline auto CreateDatabase()
 		make_table("Wishlist",
 			make_column("userId", &Wishlist::GetUserID, &Wishlist::SetUserID),
 			make_column("moviesId", &Wishlist::GetMoviesID, &Wishlist::SetMoviesID),
-			primary_key(&Wishlist::GetUserID, &Wishlist::SetUserID, &Wishlist::GetMoviesID, &Wishlist::SetMoviesID),
+			//primary_key(&Wishlist::GetUserID, &Wishlist::SetUserID, &Wishlist::GetMoviesID, &Wishlist::SetMoviesID),
 			foreign_key(&Wishlist::SetUserID).references(&User::GetUserId),
 			foreign_key(&Wishlist::SetMoviesID).references(&Movies::GetMoviesID)),
 		make_table("Actors",
@@ -64,12 +65,12 @@ inline auto CreateDatabase()
 			make_column("movieId", &UserRating::SetMovieId, &UserRating::GetMovieId),
 			make_column("rating", &UserRating::SetRating, &UserRating::GetRating),
 			foreign_key(&UserRating::SetUserId).references(&User::GetUserId),
-			foreign_key(&UserRating::SetMovieId).references(&Movies::GetMoviesID),
-			primary_key(&UserRating::SetUserId, &UserRating::GetUserId, &UserRating::SetMovieId, &UserRating::GetMovieId)),
+			foreign_key(&UserRating::SetMovieId).references(&Movies::GetMoviesID)),
+			//primary_key(&UserRating::SetUserId, &UserRating::GetUserId, &UserRating::SetMovieId, &UserRating::GetMovieId)),
 		make_table("WatchedList",
 			make_column("userId", &WatchedList::GetUserID, &WatchedList::SetUserID),
 			make_column("moviesId", &WatchedList::GetMoviesID, &WatchedList::SetMoviesID),
-			primary_key(&WatchedList::GetUserID, &WatchedList::SetUserID, &WatchedList::GetMoviesID, &WatchedList::SetMoviesID),
+			//primary_key(&WatchedList::GetUserID, &WatchedList::SetUserID, &WatchedList::GetMoviesID, &WatchedList::SetMoviesID),
 			foreign_key(&WatchedList::SetUserID).references(&User::GetUserId),
 			foreign_key(&WatchedList::SetMoviesID).references(&Movies::GetMoviesID)),
 		make_table("LikedGenre",

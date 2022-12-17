@@ -10,6 +10,14 @@ User::User(const std::string& username, const std::string& password, const std::
 	
 }
 
+//User::User(const User& user)
+//{
+//	m_userId = user.m_userId;
+//	m_username = user.m_username;
+//	m_birthdate = user.m_birthdate;
+//	m_gender = user.m_gender;
+//}
+
 int User::GetUserId() const
 {
 	return this->m_userId;

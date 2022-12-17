@@ -1,13 +1,22 @@
 #include "Login.h"
-#include"Database.h"
-#include"User.h"
 #include<iostream>
 #include<tuple>
 #include<stdexcept>
 
 Login::Login(const std::string& username, const std::string& password) : m_username{ username }, m_password{ password }
 {
-    showUser();
+}
+
+Login::Login(const Login& login)
+{
+    *this = login;
+}
+
+Login& Login::operator=(const Login& login)
+{
+    m_username = login.m_username;
+    m_password = login.m_password;
+    return *this;
 }
 
 void Login::SetUsername(const std::string& username)
@@ -48,86 +57,22 @@ std::string Login::LoginStatusToString(Login::LoginStatus loginStatus)
     }
 }
 
-inline auto Login::checkUser()
+bool Login::checkUser(const User& user)
 {
-    using namespace sqlite_orm;
-    namespace sql = sqlite_orm;
-   
-    /*auto User= db.m_storage.select(columns(&User::GetUsername,&User::GetPassword,&User::GetBirthdate,&User::GetGender),
-        sql::where(c(&User::GetUsername) == m_username));*/
-    bool isFound = false;
-    User userFound;
-    auto user = Database::GetInstance()->GetElements<User>();
-    for (int i = 0; i < user.size(); i++)
+    if (user.GetPassword().empty())
     {
-        if (user[i].GetUsername() == m_username)
-        {
-            isFound = true;
-            userFound = user[i];
-            break;
-        }
+        std::cout<<LoginStatusToString(LoginStatus::NotRegistered) << "\n";
+        return false;
+    }
+    if (user.GetPassword() == m_password)
+    {
+        std::cout << LoginStatusToString(LoginStatus::Successful) << "\n";
+        return true;
     }
 
-    try {
-        if (!isFound)
-        {
-            throw LoginStatusToString(Login::LoginStatus::NotRegistered);
-        }
-        if (userFound.GetPassword()!=m_password)
-        {
-            throw LoginStatusToString(Login::LoginStatus::WrongPassword);
-        }
-    }
-    catch (const std::string& exception)
-    {
-        std::cout << exception;
-    }
-        return userFound;
+    std::cout << LoginStatusToString(LoginStatus::WrongPassword) << "\n";
+    return false;
+    
 }
 
-void Login::showUser()
-{
-    using loggedUser = decltype(checkUser());
-    loggedUser user;
 
-    try
-    {
-        user = checkUser();
-        if (user.GetPassword()!=m_password)
-            throw std::string("Try again. \n");
-    }
-    catch (const std::string& exception)
-    {
-        std::cout << exception;
-        return;
-    }
-
-    std::cout << LoginStatusToString(Login::LoginStatus::Successful);
-    std::cout << "0 - Exit \n";
-    std::cout << "1 - Show username \n";
-    std::cout << "2 - Show birthdate \n";
-    std::cout << "3 - Show gender \n";
-
-    bool exitCondition = false;
-    while (!exitCondition)
-    {
-        int option;
-        std::cin >> option;
-
-        switch (option)
-        {
-        case 0:
-            exitCondition = true;
-            break;
-        case 1:
-            std::cout << user.GetUsername() << "\n";
-            break;
-        case 2:
-            std::cout << user.GetBirthdate() << "\n";
-            break;
-        case 3:
-            std::cout << user.GetGender() << "\n";
-            break;
-        }
-    }
-}
