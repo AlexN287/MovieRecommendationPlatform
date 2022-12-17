@@ -7,7 +7,68 @@
 
 Application::Application()
 {
-   
+    std::string username, password;
+    std::cout << "Username: ";
+    std::cin >> username;
+    std::cout << "Password: ";
+    std::cin >> password;
+
+    bool exitCondition = false;
+    Login login(username, password);
+    User user = login.getUser();
+
+    while (!login.checkUser(user))
+    {
+        std::cout << "Try again. \n";
+        std::cout << "Username: ";
+        std::cin >> username;
+        std::cout << "Password: ";
+        std::cin >> password;
+        login = Login(username, password);
+        user = login.getUser();
+    }
+
+    std::cout << "0 - Exit \n";
+    std::cout << "1 - Show User \n";
+    std::cout << "2 - Add movie to whishlist \n";
+    std::cout << "3 - Add movie to watchedlist \n";
+    std::cout << "4 - Give rating \n";
+
+    int condition;
+    while (!exitCondition)
+    {
+        std::cin >> condition;
+        switch (condition)
+        {
+        case 0:
+            exitCondition = true;
+            break;
+
+        case 1:
+            login.showUser(user);
+            break;
+
+        case 2:
+        {
+            Movies movie = SelectMovie();
+            AddToWishList(user, movie);
+            break;
+        }
+        case 3:
+        {
+            Movies movie = SelectMovie();
+            AddToWatchedList(user, movie);
+            break;
+        }
+        case 4:
+        {
+            Movies movie = SelectMovie();
+            GiveRating(user, movie);
+            break;
+        }
+
+        }
+    }
 }
 
 Movies Application::SelectMovie()
