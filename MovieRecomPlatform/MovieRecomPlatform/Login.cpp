@@ -75,4 +75,27 @@ bool Login::checkUser(const User& user)
     
 }
 
+User Login::getUser()
+{
+    using namespace sqlite_orm;
+    namespace sql = sqlite_orm;
 
+    User userFound;
+    auto user = Database::GetInstance()->GetElements<User>();
+    for (int i = 0; i < user.size(); i++)
+    {
+        if (user[i].GetUsername() == m_username)
+        {
+            userFound = user[i];
+            break;
+        }
+    }
+    return userFound;
+}
+
+void Login::showUser(const User& user)
+{
+    std::cout << "Username: " << user.GetUsername() << "\n";
+    std::cout << "Birthdate: " << user.GetBirthdate() << "\n";
+    std::cout << "Gender: " << user.GetGender() << "\n";
+}
