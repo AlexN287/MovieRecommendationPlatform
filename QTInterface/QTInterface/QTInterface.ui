@@ -75,7 +75,7 @@
       <widget class="QWidget" name="layoutWidget_6">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>30</x>
          <y>40</y>
          <width>196</width>
          <height>56</height>
@@ -85,28 +85,22 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QLabel" name="label">
-            <property name="text">
+           <widget class="QLineEdit" name="lineEdit_username">
+            <property name="placeholderText">
              <string>Username</string>
             </property>
            </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_username"/>
           </item>
          </layout>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QLabel" name="label_8">
-            <property name="text">
+           <widget class="QLineEdit" name="lineEdit_password">
+            <property name="placeholderText">
              <string>Password</string>
             </property>
            </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_password"/>
           </item>
          </layout>
         </item>
