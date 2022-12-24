@@ -18,6 +18,11 @@ Movies::Movies(std::string type, std::string title, std::string director, std::s
 {
 }
 
+bool Movies::operator==(const Movies& movie)
+{
+	return this->m_moviesId==movie.m_moviesId;
+}
+
 //Movies::Movies(const Movies& movies)
 //{
 //	m_moviesId = movies.m_moviesId;

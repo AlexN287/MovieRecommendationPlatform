@@ -24,6 +24,7 @@ public:
 		 std::string country, std::string dateAdded, std::string releaseYear, std::string rating, std::string duration,
 		std::string genres, std::string description);
 	Movies(const Movies& movies) = default;
+	bool operator==(const Movies& movie);
 	~Movies() = default;
 
 	int GetMoviesID() const;

@@ -4,6 +4,7 @@
 #include<math.h>
 #include<string>
 #include <vector>
+#include<random>
 
 Application::Application()
 {
@@ -76,17 +77,35 @@ Movies Application::SelectMovie()
     auto movies = Database::GetInstance()->GetElements<Movies>();
     return movies[0];
 }
-//
-//std::vector<Movies> Application::RecommendMovies(const User& user)
-//{
-//    using namespace sqlite_orm;
-//    namespace sql = sqlite_orm;
-//
-//    auto& watchedList = db.m_storage.select(columns(&Movies::GetTitle, &Movies::GetType, &Movies::GetDirector, &Movies::GetReleaseYear,
-//        &Movies::GetCountry, &Movies::GetRating, &Movies::GetDuration),
-//        sql::where(findSubString(&Movies::GetTitle, movieName)));
-//    return std::vector<Movies>();
-//}
+
+std::vector<Movies> selectRandomMovies()
+{
+    const int moviesNumber = 8202;
+    std::random_device rd;
+    std::mt19937 eng(rd());
+    std::uniform_int_distribution<> distr(1, moviesNumber);
+  
+    auto moviesList = Database::GetInstance()->GetElements<Movies>();
+    std::vector<Movies> randomMoviesList;
+    while (randomMoviesList.size() <= 10)
+    {
+        int index = distr(eng);
+        if (std::find(randomMoviesList.begin(), randomMoviesList.end(), moviesList[index]) == randomMoviesList.end()) 
+            randomMoviesList.push_back(moviesList[index]);
+    }
+
+    return randomMoviesList;
+}
+
+std::vector<Movies> Application::RecommendMovies(const User& user)
+{
+    auto watchedlist = Database::GetInstance()->SelectUserWatchedList(user.GetUserId());
+    auto wishlist = Database::GetInstance()->SelectUserWishList(user.GetUserId());
+    auto rating = Database::GetInstance()->SelectUserRating(user.GetUserId());
+
+    if (watchedlist.empty() && wishlist.empty() && rating.empty())
+        return selectRandomMovies();
+}
 
 int min(int x, int y, int z) { return std::min(std::min(x, y), z); }
 

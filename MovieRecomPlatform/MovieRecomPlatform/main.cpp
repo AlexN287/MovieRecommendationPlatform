@@ -73,11 +73,13 @@ int main()
 
 	//SignUp();
 	//Database::GetInstance()->PopulateMovies("netflix_titles.csv");
-	//Application a;
+	Application a;
+	a.RecommendMovies();
 	//a.SearchMovie("taruto");
-	auto v = Database::GetInstance()->SelectUserWatchedList(5);
+	/*auto v = Database::GetInstance()->SelectUserWatchedList(5);
 	for (auto& i : v)
-		std::cout << *i.GetMoviesID();
+		std::cout << *i.GetMoviesID();*/
+	
 	//Database::GetInstance()->InsertElement(User("Marcel", "Password2", "10.11.2001", "Female"));
     //Database::GetInstance()->PopulateMovies("netflix_titles.csv");
 	//Database::GetInstance()->PopulateGenres();
