@@ -158,5 +158,12 @@ public:
 		namespace sql = sqlite_orm;
 		return instance->m_storage->get_all<UserRating>(where(c(&UserRating::GetUserId) == userId));
 	}
+
+	static auto SelectUserLikedGenres(const int& userId)
+	{
+		using namespace sqlite_orm;
+		namespace sql = sqlite_orm;
+		return instance->m_storage->get_all<LikedGenre>(where(c(&LikedGenre::GetUserID) == userId));
+	}
 };
 

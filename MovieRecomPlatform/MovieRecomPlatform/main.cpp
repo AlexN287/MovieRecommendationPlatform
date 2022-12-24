@@ -74,7 +74,7 @@ int main()
 	//SignUp();
 	//Database::GetInstance()->PopulateMovies("netflix_titles.csv");
 	Application a;
-	a.RecommendMovies();
+	//a.RecommendMovies();
 	//a.SearchMovie("taruto");
 	/*auto v = Database::GetInstance()->SelectUserWatchedList(5);
 	for (auto& i : v)
