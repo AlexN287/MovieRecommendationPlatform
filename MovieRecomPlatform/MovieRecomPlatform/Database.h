@@ -139,10 +139,17 @@ public:
 	}
 
 	static auto SelectUserWatchedList(const int& userId)
-	{	
+	{
 		using namespace sqlite_orm;
 		namespace sql = sqlite_orm;
-		return instance->m_storage->get_all<WatchedList>(where(c(&WatchedList::GetUserID)==userId));
+		return instance->m_storage->get_all<WatchedList>(where(c(&WatchedList::GetUserID) == userId));
+	}
+
+	static auto SelectUserWishList(const int& userId)
+	{
+		using namespace sqlite_orm;
+		namespace sql = sqlite_orm;
+		return instance->m_storage->get_all<Wishlist>(where(c(&Wishlist::GetUserID) == userId));
 	}
 };
 

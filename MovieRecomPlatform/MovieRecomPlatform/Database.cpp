@@ -80,7 +80,6 @@ void Database::PopulateGenres()
 
 }
 
-
 void Database::PopulateMovies(const std::string& fileName)
 {
 	std::ifstream in(fileName);

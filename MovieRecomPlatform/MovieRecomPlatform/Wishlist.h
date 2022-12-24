@@ -8,6 +8,7 @@ private:
 public:
 	Wishlist() = default;
 	Wishlist(std::unique_ptr<int> userId, std::unique_ptr<int> moviesId);
+	Wishlist(const Wishlist& wishList);
 	~Wishlist() = default;
 
 	const std::unique_ptr<int>& GetUserID() const;
