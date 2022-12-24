@@ -7,6 +7,13 @@ UserRating::UserRating(std::unique_ptr<int> userId, std::unique_ptr<int> movieId
 {
 }
 
+UserRating::UserRating(const UserRating& userRating) :
+	m_userId(std::make_unique<int>(*userRating.m_userId)),
+	m_movieId(std::make_unique<int>(*userRating.m_movieId)),
+	m_rating(userRating.m_rating)
+{
+}
+
 const std::unique_ptr<int>& UserRating::GetUserId() const
 {
 	return m_userId;

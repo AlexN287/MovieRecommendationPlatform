@@ -151,5 +151,12 @@ public:
 		namespace sql = sqlite_orm;
 		return instance->m_storage->get_all<Wishlist>(where(c(&Wishlist::GetUserID) == userId));
 	}
+
+	static auto SelectUserRating(const int& userId)
+	{
+		using namespace sqlite_orm;
+		namespace sql = sqlite_orm;
+		return instance->m_storage->get_all<UserRating>(where(c(&UserRating::GetUserId) == userId));
+	}
 };
 
