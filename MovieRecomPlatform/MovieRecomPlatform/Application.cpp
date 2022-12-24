@@ -76,6 +76,17 @@ Movies Application::SelectMovie()
     auto movies = Database::GetInstance()->GetElements<Movies>();
     return movies[0];
 }
+//
+//std::vector<Movies> Application::RecommendMovies(const User& user)
+//{
+//    using namespace sqlite_orm;
+//    namespace sql = sqlite_orm;
+//
+//    auto& watchedList = db.m_storage.select(columns(&Movies::GetTitle, &Movies::GetType, &Movies::GetDirector, &Movies::GetReleaseYear,
+//        &Movies::GetCountry, &Movies::GetRating, &Movies::GetDuration),
+//        sql::where(findSubString(&Movies::GetTitle, movieName)));
+//    return std::vector<Movies>();
+//}
 
 int min(int x, int y, int z) { return std::min(std::min(x, y), z); }
 

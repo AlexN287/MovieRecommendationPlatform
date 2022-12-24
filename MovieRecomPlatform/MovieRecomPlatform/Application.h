@@ -24,7 +24,7 @@ public:
 	void AddToWatchedList(const User& user, const Movies& movie);
 	void GiveRating(const User& user,const Movies& movie);
 	Movies SelectMovie();
-
+	std::vector<Movies> RecommendMovies(const User& user);
 
 private:
 	std::string SearchStatusToString(Application::SearchStatus searchStatus);
