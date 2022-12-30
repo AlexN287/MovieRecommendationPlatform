@@ -8,6 +8,9 @@ SignUp::SignUp() {
 	for (User u : Database::GetInstance()->GetElements<User>())
 		if (u.GetUsername() == user.GetUsername())
 			newUserPreferences(u.GetUserId());
+
+	//Application a;
+	//a.RecommendInitialMovies(user);
 }
 
 User SignUp::createUser() {

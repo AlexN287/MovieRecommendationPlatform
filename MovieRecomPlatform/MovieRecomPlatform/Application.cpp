@@ -172,19 +172,11 @@ std::vector<Genres> GetUserGenres(const User& user)
 void Application::RecommendInitialMovies(const User& user)
 {
     std::vector<Movies> recommendMovies;
-    auto watchedlist = Database::GetInstance()->SelectUserWatchedList(user.GetUserId());
-    auto wishlist = Database::GetInstance()->SelectUserWishList(user.GetUserId());
-    auto rating = Database::GetInstance()->SelectUserRating(user.GetUserId());
     auto userGenres = GetUserGenres(user);
     std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
    
-
-    if (watchedlist.empty() && wishlist.empty() && rating.empty())
-    {
-        FindMovieGenre(userGenres, recommendMovies);
-        SelectRandomMovies(recommendMovies);
-        
-    }
+    FindMovieGenre(userGenres, recommendMovies);
+    SelectRandomMovies(recommendMovies);
 
     for (int i = 0; i < recommendMovies.size(); i++)
     {
@@ -194,6 +186,20 @@ void Application::RecommendInitialMovies(const User& user)
             std::move(movieIdPtr)));
     }
        
+}
+
+void Application::RecommendMoviesBasedOnInput(const Movies& movie, const User& user)
+{
+    std::vector<Movies> recommendMovies;
+    FindSimilarMovie(movie, recommendMovies);
+    std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
+    for (int i = 0; i < recommendMovies.size(); i++)
+    {
+        Movies currentMovie = recommendMovies[i];
+        std::unique_ptr<int> movieIdPtr = std::make_unique<int>(currentMovie.GetMoviesID());
+        Database::GetInstance()->InsertElement(Recommandation(std::move(userIdPtr),
+            std::move(movieIdPtr)));
+    }
 }
 
 int min(int x, int y, int z) { return std::min(std::min(x, y), z); }
@@ -412,6 +418,8 @@ void Application::AddToWishList(const User& user, const Movies& movie)
     std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
     std::unique_ptr<int> movieIdPtr = std::make_unique<int>(movie.GetMoviesID());
     Database::GetInstance()->InsertElement(Wishlist(std::move(userIdPtr), std::move(movieIdPtr)));
+
+    RecommendMoviesBasedOnInput(movie, user);
 }
 
 void Application::AddToWatchedList(const User& user, const Movies& movie)
@@ -419,6 +427,8 @@ void Application::AddToWatchedList(const User& user, const Movies& movie)
     std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
     std::unique_ptr<int> movieIdPtr = std::make_unique<int>(movie.GetMoviesID());
     Database::GetInstance()->InsertElement(WatchedList(std::move(userIdPtr), std::move(movieIdPtr)));
+
+    RecommendMoviesBasedOnInput(movie, user);
 }
 
 void Application::GiveRating(const User& user, const Movies& movie)
@@ -429,4 +439,12 @@ void Application::GiveRating(const User& user, const Movies& movie)
     int rating;
     std::cin >> rating;
     Database::GetInstance()->InsertElement(UserRating(std::move(userIdPtr), std::move(movieIdPtr), rating));
+
+    if(rating == 1)
+        RecommendMoviesBasedOnInput(movie, user);
+    else
+    {
+        //TODO: NotRecommendMovies
+    }
+        
 }

@@ -26,6 +26,7 @@ public:
 	void GiveRating(const User& user,const Movies& movie);
 	Movies SelectMovie();
 	void RecommendInitialMovies(const User& user);
+	void RecommendMoviesBasedOnInput(const Movies& movie, const User& user);
 
 private:
 	std::string SearchStatusToString(Application::SearchStatus searchStatus);
