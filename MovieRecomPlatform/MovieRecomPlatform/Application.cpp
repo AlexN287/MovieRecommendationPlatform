@@ -97,6 +97,29 @@ std::vector<Movies> selectRandomMovies()
     return randomMoviesList;
 }
 
+void FindMoviesByGenre(const Movies& movie, std::vector<Movies>& recommendMovies)
+{
+    auto moviesList = Database::GetInstance()->GetElements<Movies>();
+    int count = 0;
+    if (movie.GetGenres().find(',') == std::string::npos)
+    {
+        for (int i = 0; i < moviesList.size(); i++)
+        {
+            std::string movieGenres = moviesList[i].GetGenres();
+            if (movieGenres.find(movie.GetGenres()) && count <= 10) 
+            {
+                if (std::find(recommendMovies.begin(), recommendMovies.end(), moviesList[i]) == recommendMovies.end())
+                {
+                    recommendMovies.push_back(moviesList[i]);
+                    count++;
+                }
+            }
+            else
+                break;
+        }
+    }
+}
+
 std::vector<Movies> Application::RecommendMovies(const User& user)
 {
     auto watchedlist = Database::GetInstance()->SelectUserWatchedList(user.GetUserId());
