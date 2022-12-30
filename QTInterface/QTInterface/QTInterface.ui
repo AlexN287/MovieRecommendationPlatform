@@ -777,6 +777,19 @@
         <string>Watched</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="pushButton_profile">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>40</y>
+         <width>75</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Profile</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
