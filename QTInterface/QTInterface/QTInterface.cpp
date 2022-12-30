@@ -25,6 +25,9 @@ void QTInterface::on_pushButton_login_clicked()
 void QTInterface::on_pushButton_signUp_clicked() {
     ui.stackedWidget->setCurrentIndex(1);
 }
+void QTInterface::on_pushButton_back_clicked(){
+    ui.stackedWidget->setCurrentIndex(0);
+}
 void QTInterface::on_checkBox_male_stateChanged(int arg) {
     if (arg != 0)
         ui.checkBox_female->setChecked(0);

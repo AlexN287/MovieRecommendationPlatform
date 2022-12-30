@@ -39,7 +39,7 @@
      <string notr="true">background-color:white;</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_1">
      <widget class="QGroupBox" name="groupBox_login">
@@ -675,7 +675,7 @@
        <property name="geometry">
         <rect>
          <x>140</x>
-         <y>260</y>
+         <y>250</y>
          <width>75</width>
          <height>24</height>
         </rect>
@@ -708,6 +708,19 @@
        </property>
        <property name="text">
         <string>Gender</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_back">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>280</y>
+         <width>75</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Back</string>
        </property>
       </widget>
      </widget>
