@@ -10,6 +10,7 @@ public:
 	Genres() = default;
 	Genres(std::string name);
 	Genres(const Genres& genres) = default;
+	bool operator==(const Genres& genres);
 	~Genres() = default;
 
 	int GetGenreId() const;

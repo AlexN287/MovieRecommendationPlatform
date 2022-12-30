@@ -6,6 +6,11 @@ Genres::Genres(std::string name) :
 {
 }
 
+bool Genres::operator==(const Genres& genres)
+{
+	return this->m_genreId = genres.m_genreId;
+}
+
 int Genres::GetGenreId() const
 {
 	return m_genreId;

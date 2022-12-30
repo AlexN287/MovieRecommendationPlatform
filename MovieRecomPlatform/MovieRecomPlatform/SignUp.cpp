@@ -66,7 +66,7 @@ void SignUp::newUserPreferences(const int& userId) {
 	while (genreName != "0") {
 		if (!genreName.empty()) {
 			std::unique_ptr<int> userIdPtr = std::make_unique<int>(userId);
-			Database::GetInstance()->InsertElement(LikedGenre(std::move(userIdPtr), genreName));;
+			Database::GetInstance()->InsertElement(LikedGenre(std::move(userIdPtr), genreName));
 
 		}
 		std::getline(std::cin, genreName);
