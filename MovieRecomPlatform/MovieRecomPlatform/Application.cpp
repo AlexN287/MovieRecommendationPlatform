@@ -97,25 +97,40 @@ std::vector<Movies> selectRandomMovies()
     return randomMoviesList;
 }
 
+std::vector<std::string> splitComma(const std::string& str, const std::string& delim)
+{
+    std::vector<std::string> result;
+    size_t startIndex = 0;
+
+    for (size_t found = str.find(delim); found != std::string::npos; found = str.find(delim, startIndex))
+    {
+        result.emplace_back(str.begin() + startIndex, str.begin() + found);
+        startIndex = found + delim.size();
+    }
+    if (startIndex != str.size())
+        result.emplace_back(str.begin() + startIndex, str.end());
+    return result;
+}
+
 void FindMoviesByGenre(const Movies& movie, std::vector<Movies>& recommendMovies)
 {
     auto moviesList = Database::GetInstance()->GetElements<Movies>();
+    const std::string delim = ",";
+    std::vector<std::string> movieGenres = splitComma(movie.GetGenres(), delim);
     int count = 0;
-    if (movie.GetGenres().find(',') == std::string::npos)
+    for (int i = 0; i < moviesList.size(); i++)
     {
-        for (int i = 0; i < moviesList.size(); i++)
+        for (int j = 0; j < movieGenres.size() && count<=10; j++)
         {
-            std::string movieGenres = moviesList[i].GetGenres();
-            if (movieGenres.find(movie.GetGenres()) && count <= 10) 
+            if (moviesList[i].GetGenres().find(movieGenres[j]))
             {
                 if (std::find(recommendMovies.begin(), recommendMovies.end(), moviesList[i]) == recommendMovies.end())
                 {
                     recommendMovies.push_back(moviesList[i]);
                     count++;
+                    break;
                 }
             }
-            else
-                break;
         }
     }
 }
