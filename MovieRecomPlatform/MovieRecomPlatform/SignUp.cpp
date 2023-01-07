@@ -63,18 +63,33 @@ void SignUp::addUserInDatabase(const User& user) {
 }
 
 void SignUp::newUserPreferences(const int& userId) {
-	std::string genreName;
+	/*std::string genreName;
 	std::cout << "Give us some of your favourite genres (type 0 to skip): ";
-	std::getline(std::cin, genreName);
-	while (genreName != "0") {
+	std::getline(std::cin, genreName);*/
+	/*while (genreName != "0") {
 		if (!genreName.empty()) {
 			std::unique_ptr<int> userIdPtr = std::make_unique<int>(userId);
 			Database::GetInstance()->InsertElement(LikedGenre(std::move(userIdPtr), genreName));
 
 		}
 		std::getline(std::cin, genreName);
+	}*/
+
+	auto genresList = Database::GetInstance()->GetElements<Genres>();
+	std::cout << "-1 - Exit" << "\n";
+	for (int i = 0; i < genresList.size(); i++)
+	{
+		std::cout << i << " - " << genresList[i].GetName() << "\n";
 	}
-	
+
+	int option;
+	std::cin >> option;
+	while (option!=-1)
+	{
+		std::unique_ptr<int> userIdPtr = std::make_unique<int>(userId);
+		Database::GetInstance()->InsertElement(LikedGenre(std::move(userIdPtr), genresList[option].GetName()));
+		std::cin >> option;
+	}
 	std::string actorName;
 	std::cout << "Give us some of your favourite actors (type 0 to skip): ";
 	std::getline(std::cin, actorName);

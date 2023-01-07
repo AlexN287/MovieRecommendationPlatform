@@ -486,7 +486,8 @@ void Application::GiveRating(const User& user, const Movies& movie)
         RecommendMoviesBasedOnInput(movie, user);
     else
     {
-        //TODO: NotRecommendMovies
+        std::vector<std::string> movieGenres = splitChar(movie.GetGenres(), ",");
+        DeleteRecommendedMoviesByGenre(movieGenres);
     }
         
 }
