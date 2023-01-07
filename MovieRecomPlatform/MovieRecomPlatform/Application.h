@@ -27,6 +27,7 @@ public:
 	Movies SelectMovie();
 	void RecommendInitialMovies(const User& user);
 	void RecommendMoviesBasedOnInput(const Movies& movie, const User& user);
+	void DeleteLeastRecentRecommendedMovie(const User& user);
 
 private:
 	std::string SearchStatusToString(Application::SearchStatus searchStatus);

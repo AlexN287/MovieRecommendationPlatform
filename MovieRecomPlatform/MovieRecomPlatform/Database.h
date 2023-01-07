@@ -121,7 +121,7 @@ public:
 	}
 
 	template<class T>
-	static void RemoveElement(T element)
+	static void RemoveElement(const T& element)
 	{
 		instance->m_storage->remove(element);
 	}
@@ -164,6 +164,13 @@ public:
 		using namespace sqlite_orm;
 		namespace sql = sqlite_orm;
 		return instance->m_storage->get_all<LikedGenre>(where(c(&LikedGenre::GetUserID) == userId));
+	}
+
+	static auto SelectMovieById(const int& movieId)
+	{
+		using namespace sqlite_orm;
+		namespace sql = sqlite_orm;
+		return instance->m_storage->get<Movies>(where(c(&Movies::GetMoviesID) == movieId));
 	}
 };
 
