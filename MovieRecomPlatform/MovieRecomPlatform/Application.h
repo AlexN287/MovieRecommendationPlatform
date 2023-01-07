@@ -19,6 +19,7 @@ class Application
 
 public:
 	Application();
+	Application(int dummy);
 	void SearchMovie(std::string movieName);
 	void ShowMovie(std::string movieName); //TODO
 	void AddToWishList(const User& user, const Movies& movie);
@@ -28,7 +29,7 @@ public:
 	void RecommendInitialMovies(const User& user);
 	void RecommendMoviesBasedOnInput(const Movies& movie, const User& user);
 	void DeleteLeastRecentRecommendedMovie(const User& user);
-
+	std::vector<Movies> SelectRandomMoviesFromRecommandation(const User& user);
 private:
 	std::string SearchStatusToString(Application::SearchStatus searchStatus);
 };

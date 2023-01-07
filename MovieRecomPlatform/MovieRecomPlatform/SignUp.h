@@ -3,6 +3,7 @@
 #include "User.h"
 #include "LikedGenre.h"
 #include "LikedActors.h"
+#include "Application.h"
 
 class SignUp
 {

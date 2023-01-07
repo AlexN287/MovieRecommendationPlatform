@@ -5,6 +5,13 @@ Recommandation::Recommandation(std::unique_ptr<int> userId, std::unique_ptr<int>
     m_movieId{ std::move(movieId) }
 {}
 
+Recommandation::Recommandation(const Recommandation & recommandation) :
+    m_userId(std::make_unique<int>(*recommandation.m_userId)),
+    m_movieId(std::make_unique<int>(*recommandation.m_movieId))
+{
+
+}
+
 const std::unique_ptr<int>& Recommandation::GetUserID() const
 {
     return m_userId;

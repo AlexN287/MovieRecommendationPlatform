@@ -6,6 +6,11 @@
 #include <vector>
 #include<random>
 
+Application::Application(int dummy)
+{
+
+}
+
 Application::Application()
 {
     std::string username, password;
@@ -94,6 +99,29 @@ void SelectRandomMovies(std::vector<Movies>& randomMoviesList)
             randomMoviesList.push_back(moviesList[index]);
     }
 
+}
+
+std::vector<Movies> Application::SelectRandomMoviesFromRecommandation(const User& user)
+{
+    auto recommendedMovies = Database::GetInstance()->SelectUserRecommandation(user.GetUserId());
+    std::vector<Movies> selectedMovies;
+   
+    std::random_device rd;
+    std::mt19937 eng(rd());
+    std::uniform_int_distribution<> distr(1, recommendedMovies.size());
+
+
+    while (selectedMovies.size() <= 10)
+    {
+        int index = distr(eng);
+        Recommandation recommendation(recommendedMovies[index]);
+        Movies currentMovie = Database::GetInstance()->SelectMovieById(*recommendation.GetMovieID());
+
+        if (std::find(selectedMovies.begin(), selectedMovies.end(), currentMovie) == selectedMovies.end())
+            selectedMovies.push_back(currentMovie);
+    }
+
+    return selectedMovies;
 }
 
 std::vector<std::string> splitChar(const std::string& str, const std::string& delim)

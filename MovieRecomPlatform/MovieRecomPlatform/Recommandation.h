@@ -8,6 +8,8 @@ class Recommandation
 public:
 	Recommandation() = default;
 	Recommandation(std::unique_ptr<int> userId, std::unique_ptr<int> moviesId);
+	Recommandation(const Recommandation& recommandation);
+	Recommandation& operator=(const Recommandation& recommandation);
 	~Recommandation() = default;
 
 	const std::unique_ptr<int>& GetUserID() const;
