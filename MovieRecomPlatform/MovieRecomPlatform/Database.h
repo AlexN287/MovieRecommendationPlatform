@@ -172,5 +172,12 @@ public:
 		namespace sql = sqlite_orm;
 		return instance->m_storage->get<Movies>(where(c(&Movies::GetMoviesID) == movieId));
 	}
+
+	static auto SelectUserRecommandation(const int& userId)
+	{
+		using namespace sqlite_orm;
+		namespace sql = sqlite_orm;
+		return instance->m_storage->get_all<Recommandation>(where(c(&Recommandation::GetUserID) == userId));
+	}
 };
 

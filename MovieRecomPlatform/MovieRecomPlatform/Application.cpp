@@ -202,9 +202,9 @@ void Application::RecommendMoviesBasedOnInput(const Movies& movie, const User& u
     }
 }
 
-void DeleteRecommendedMoviesByGenre(const std::vector<std::string>& genresToDelete)
+void DeleteRecommendedMoviesByGenre(const std::vector<std::string>& genresToDelete, const User& user)
 {
-    auto recommendMovies = Database::GetInstance()->GetElements<Recommandation>();
+    auto recommendMovies = Database::GetInstance()->SelectUserRecommandation(user.GetUserId());
     int countFiveMoviesToDelete = 0;
     for (int i = 0; i < recommendMovies.size() || countFiveMoviesToDelete == 5; i++)
     {
@@ -221,7 +221,7 @@ void DeleteRecommendedMoviesByGenre(const std::vector<std::string>& genresToDele
 
 void Application::DeleteLeastRecentRecommendedMovie(const User& user)
 {
-    auto recommendMovies = Database::GetInstance()->GetElements<Recommandation>();
+    auto recommendMovies = Database::GetInstance()->SelectUserRecommandation(user.GetUserId());
     const int firstThreeOldMovies = 3;
     std::vector<std::string> genresToDelete;
     for (int i = 0; i < firstThreeOldMovies; i++)
@@ -239,7 +239,7 @@ void Application::DeleteLeastRecentRecommendedMovie(const User& user)
             }
         }
     }
-    DeleteRecommendedMoviesByGenre(genresToDelete);
+    DeleteRecommendedMoviesByGenre(genresToDelete, user);
 }
 
 int min(int x, int y, int z) { return std::min(std::min(x, y), z); }
@@ -487,7 +487,7 @@ void Application::GiveRating(const User& user, const Movies& movie)
     else
     {
         std::vector<std::string> movieGenres = splitChar(movie.GetGenres(), ",");
-        DeleteRecommendedMoviesByGenre(movieGenres);
+        DeleteRecommendedMoviesByGenre(movieGenres, user);
     }
         
 }
