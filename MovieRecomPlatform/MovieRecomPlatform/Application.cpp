@@ -202,6 +202,23 @@ void Application::RecommendMoviesBasedOnInput(const Movies& movie, const User& u
     }
 }
 
+void DeleteRecommendedMoviesByGenre(const std::vector<std::string>& genresToDelete)
+{
+    auto recommendMovies = Database::GetInstance()->GetElements<Recommandation>();
+    int countFiveMoviesToDelete = 0;
+    for (int i = 0; i < recommendMovies.size() || countFiveMoviesToDelete == 5; i++)
+    {
+        std::string movieGenres = Database::GetInstance()->
+            SelectMovieById(*recommendMovies[i].GetMovieID()).GetGenres();
+        for(int j=0;j<genresToDelete.size();j++)
+            if (movieGenres.find(genresToDelete[j]) != std::string::npos)
+            {
+                Database::GetInstance()->RemoveElement<Recommandation>(recommendMovies[i]);
+                countFiveMoviesToDelete++;
+            }
+    }
+}
+
 void Application::DeleteLeastRecentRecommendedMovie(const User& user)
 {
     auto recommendMovies = Database::GetInstance()->GetElements<Recommandation>();
@@ -222,6 +239,7 @@ void Application::DeleteLeastRecentRecommendedMovie(const User& user)
             }
         }
     }
+    DeleteRecommendedMoviesByGenre(genresToDelete);
 }
 
 int min(int x, int y, int z) { return std::min(std::min(x, y), z); }
