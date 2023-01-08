@@ -6,7 +6,7 @@ QTInterface::QTInterface(QWidget* parent)
 {
     ui.setupUi(this);
     //ui.menuBar->hide();
-    ui.stackedWidget->setCurrentIndex(2);
+    ui.stackedWidget->setCurrentIndex(6);
 }
 
 QTInterface::~QTInterface()
@@ -43,4 +43,14 @@ void QTInterface::on_checkBox_female_stateChanged(int arg) {
 }
 void QTInterface::on_actionSign_Out_3_triggered() {
     ui.stackedWidget->setCurrentIndex(0);
+}
+void QTInterface::on_pushButton_change_username_clicked() {
+    std::string username = ui.lineEdit_username_account->text().toStdString();
+    QMessageBox::warning(this, "Login", "User or password incorrect.");
+    //check if username is in database and change it
+}
+void QTInterface::on_pushButton_change_password_clicked() {
+    std::string password = ui.lineEdit_password_account->text().toStdString();
+    QMessageBox::warning(this, "Login", "User or password incorrect.");
+    //change password in database
 }

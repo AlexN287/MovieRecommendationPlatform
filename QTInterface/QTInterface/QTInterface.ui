@@ -1005,7 +1005,7 @@
        <string>Delete Account</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="lineEdit_username_account">
       <property name="geometry">
        <rect>
         <x>370</x>
@@ -1015,7 +1015,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="lineEdit_password_account">
       <property name="geometry">
        <rect>
         <x>370</x>
