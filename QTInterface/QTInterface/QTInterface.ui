@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>734</width>
-    <height>442</height>
+    <width>731</width>
+    <height>453</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,7 @@
      <string notr="true">background-color:white;</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_1">
      <widget class="QGroupBox" name="groupBox_login">
@@ -732,72 +732,48 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_3">
-     <widget class="QGroupBox" name="groupBox_mainPage">
+     <widget class="QGroupBox" name="groupBox_1">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>40</y>
-        <width>551</width>
-        <height>341</height>
+        <x>0</x>
+        <y>30</y>
+        <width>731</width>
+        <height>111</height>
        </rect>
       </property>
       <property name="title">
-       <string>Main Page</string>
+       <string>Continue Watching</string>
       </property>
-      <widget class="QPushButton" name="pushButton_myList">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>40</y>
-         <width>75</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>My list</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_likedMovies">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>40</y>
-         <width>75</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Liked</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_watchedMovies">
-       <property name="geometry">
-        <rect>
-         <x>200</x>
-         <y>40</y>
-         <width>75</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Watched</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_profile">
-       <property name="geometry">
-        <rect>
-         <x>460</x>
-         <y>40</y>
-         <width>75</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Profile</string>
-       </property>
-      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>160</y>
+        <width>731</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>For You</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>290</y>
+        <width>731</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Explore</string>
+      </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="page_4"/>
+    <widget class="QWidget" name="page_5"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -805,7 +781,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>734</width>
+     <width>731</width>
      <height>22</height>
     </rect>
    </property>
