@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>735</width>
+    <width>734</width>
     <height>442</height>
    </rect>
   </property>
@@ -39,7 +39,7 @@
      <string notr="true">background-color:white;</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_1">
      <widget class="QGroupBox" name="groupBox_login">
@@ -794,6 +794,21 @@
     </widget>
    </widget>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>734</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <action name="actionhuyeba">
+   <property name="text">
+    <string>huyeba</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
