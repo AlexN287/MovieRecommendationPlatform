@@ -5,8 +5,8 @@ QTInterface::QTInterface(QWidget* parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    ui.menuBar->hide();
-    ui.stackedWidget->setCurrentIndex(0);
+    //ui.menuBar->hide();
+    ui.stackedWidget->setCurrentIndex(2);
 }
 
 QTInterface::~QTInterface()
@@ -19,12 +19,16 @@ void QTInterface::on_pushButton_login_clicked()
     if (username == "test" && password == "test") {
         ui.stackedWidget->setCurrentIndex(2);
         ui.menuBar->show();
+        ui.lineEdit_username->clear();
+        ui.lineEdit_password->clear();
     }
     else
         QMessageBox::warning(this, "Login", "User or password incorrect.");
 }
 void QTInterface::on_pushButton_signUp_clicked() {
     ui.stackedWidget->setCurrentIndex(1);
+    ui.lineEdit_username->clear();
+    ui.lineEdit_password->clear();
 }
 void QTInterface::on_pushButton_back_clicked() {
     ui.stackedWidget->setCurrentIndex(0);
@@ -36,4 +40,7 @@ void QTInterface::on_checkBox_male_stateChanged(int arg) {
 void QTInterface::on_checkBox_female_stateChanged(int arg) {
     if (arg != 0)
         ui.checkBox_male->setChecked(0);
+}
+void QTInterface::on_actionSign_Out_3_triggered() {
+    ui.stackedWidget->setCurrentIndex(0);
 }

@@ -39,7 +39,7 @@
      <string notr="true">background-color:white;</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_1">
      <widget class="QGroupBox" name="groupBox_login">
@@ -772,8 +772,88 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_4"/>
-    <widget class="QWidget" name="page_5"/>
+    <widget class="QWidget" name="page_4">
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>731</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Watchlist</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>160</y>
+        <width>731</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>For You</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>290</y>
+        <width>731</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Explore</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_5">
+     <widget class="QGroupBox" name="groupBox_7">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>731</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Watchlist</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_8">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>150</y>
+        <width>731</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>For You</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_9">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>280</y>
+        <width>731</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Explore</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -847,7 +927,7 @@
     <addaction name="actionAccount"/>
     <addaction name="actionLiked_Movies"/>
     <addaction name="actionHistory"/>
-    <addaction name="actionSogn_Out"/>
+    <addaction name="actionSign_Out_3"/>
    </widget>
    <addaction name="menuHome"/>
    <addaction name="menuTV_Shows"/>
@@ -885,7 +965,7 @@
     <string>History</string>
    </property>
   </action>
-  <action name="actionSogn_Out">
+  <action name="actionSign_Out_3">
    <property name="text">
     <string>Sign Out</string>
    </property>
