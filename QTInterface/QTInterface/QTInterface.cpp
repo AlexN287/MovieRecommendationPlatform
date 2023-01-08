@@ -5,8 +5,8 @@ QTInterface::QTInterface(QWidget* parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    //ui.menuBar->hide();
-    ui.stackedWidget->setCurrentIndex(6);
+    ui.menuBar->hide();
+    ui.stackedWidget->setCurrentIndex(0);
 }
 
 QTInterface::~QTInterface()
@@ -46,11 +46,15 @@ void QTInterface::on_actionSign_Out_3_triggered() {
 }
 void QTInterface::on_pushButton_change_username_clicked() {
     std::string username = ui.lineEdit_username_account->text().toStdString();
-    QMessageBox::warning(this, "Login", "User or password incorrect.");
     //check if username is in database and change it
 }
 void QTInterface::on_pushButton_change_password_clicked() {
     std::string password = ui.lineEdit_password_account->text().toStdString();
-    QMessageBox::warning(this, "Login", "User or password incorrect.");
     //change password in database
+}
+void QTInterface::on_pushButton_delete_account_clicked() {
+    //delete the account from the database
+}
+void QTInterface::on_actionAccount_triggered() {
+    ui.stackedWidget->setCurrentIndex(6);
 }

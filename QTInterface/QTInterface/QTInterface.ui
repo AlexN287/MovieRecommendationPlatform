@@ -992,7 +992,7 @@
        <string>Change Password</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="pushButton_delete_account">
       <property name="geometry">
        <rect>
         <x>320</x>
