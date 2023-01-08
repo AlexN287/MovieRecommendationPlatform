@@ -39,7 +39,7 @@
      <string notr="true">background-color:white;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page_1">
      <widget class="QGroupBox" name="groupBox_login">
@@ -680,6 +680,9 @@
          <height>24</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Sign Up</string>
        </property>
@@ -718,6 +721,9 @@
          <width>75</width>
          <height>24</height>
         </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>Back</string>
@@ -803,10 +809,109 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>50</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <widget class="QMenu" name="menuHome">
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="title">
+     <string>Home</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuTV_Shows">
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="title">
+     <string>TV Shows</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuMovies">
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="title">
+     <string>Movies</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuWatchlist">
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="title">
+     <string>Watchlist</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuProfile">
+    <property name="geometry">
+     <rect>
+      <x>456</x>
+      <y>235</y>
+      <width>135</width>
+      <height>138</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="title">
+     <string>Profile</string>
+    </property>
+    <addaction name="actionAccount"/>
+    <addaction name="actionLiked_Movies"/>
+    <addaction name="actionHistory"/>
+    <addaction name="actionSogn_Out"/>
+   </widget>
+   <addaction name="menuHome"/>
+   <addaction name="menuTV_Shows"/>
+   <addaction name="menuMovies"/>
+   <addaction name="menuWatchlist"/>
+   <addaction name="menuProfile"/>
   </widget>
   <action name="actionhuyeba">
    <property name="text">
     <string>huyeba</string>
+   </property>
+  </action>
+  <action name="actionAccount">
+   <property name="text">
+    <string>Account</string>
+   </property>
+  </action>
+  <action name="actionSign_Out">
+   <property name="text">
+    <string>Sign Out</string>
+   </property>
+  </action>
+  <action name="actionSign_Out_2">
+   <property name="text">
+    <string>Sign Out</string>
+   </property>
+  </action>
+  <action name="actionLiked_Movies">
+   <property name="text">
+    <string>Liked Movies</string>
+   </property>
+  </action>
+  <action name="actionHistory">
+   <property name="text">
+    <string>History</string>
+   </property>
+  </action>
+  <action name="actionSogn_Out">
+   <property name="text">
+    <string>Sign Out</string>
    </property>
   </action>
  </widget>
