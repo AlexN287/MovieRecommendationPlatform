@@ -17,11 +17,16 @@ private slots:
     void on_checkBox_male_stateChanged(int arg);
     void on_checkBox_female_stateChanged(int arg);
     void on_pushButton_back_clicked();
-    void on_actionSign_Out_3_triggered();
-    void on_actionAccount_triggered();
+    void logInPage();
+    void accountPage();
     void on_pushButton_change_username_clicked();
     void on_pushButton_change_password_clicked();
     void on_pushButton_delete_account_clicked();
+    void createMenuBar();
+    void homePage();
+    void moviesPage();
+    void showsPage();
+    void watchlistPage();
 private:
     Ui::QTInterfaceClass ui;
 };

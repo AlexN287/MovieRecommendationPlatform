@@ -39,7 +39,7 @@
      <string notr="true">background-color:white;</string>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_1">
      <widget class="QGroupBox" name="groupBox_login">
@@ -97,6 +97,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <widget class="QLineEdit" name="lineEdit_password">
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
             <property name="placeholderText">
              <string>Password</string>
             </property>
@@ -180,6 +183,9 @@
          <width>181</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
        </property>
        <property name="placeholderText">
         <string>Password</string>
@@ -798,20 +804,20 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_4">
-     <widget class="QGroupBox" name="groupBox_4">
+     <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>30</y>
+        <y>290</y>
         <width>731</width>
         <height>111</height>
        </rect>
       </property>
       <property name="title">
-       <string>Watchlist</string>
+       <string>Explore</string>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox_5">
+     <widget class="QGroupBox" name="groupBox_10">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -824,17 +830,17 @@
        <string>For You</string>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox_6">
+     <widget class="QGroupBox" name="groupBox_11">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>290</y>
+        <y>30</y>
         <width>731</width>
         <height>111</height>
        </rect>
       </property>
       <property name="title">
-       <string>Explore</string>
+       <string>Watchlist</string>
       </property>
      </widget>
     </widget>
@@ -1046,66 +1052,6 @@
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
    </property>
-   <widget class="QMenu" name="menuHome">
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="title">
-     <string>Home</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuTV_Shows">
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="title">
-     <string>TV Shows</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuMovies">
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="title">
-     <string>Movies</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuWatchlist">
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="title">
-     <string>Watchlist</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuProfile">
-    <property name="geometry">
-     <rect>
-      <x>727</x>
-      <y>274</y>
-      <width>135</width>
-      <height>138</height>
-     </rect>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="title">
-     <string>Profile</string>
-    </property>
-    <addaction name="actionAccount"/>
-    <addaction name="actionLiked_Movies"/>
-    <addaction name="actionHistory"/>
-    <addaction name="actionSign_Out_3"/>
-   </widget>
-   <addaction name="menuHome"/>
-   <addaction name="menuTV_Shows"/>
-   <addaction name="menuMovies"/>
-   <addaction name="menuWatchlist"/>
-   <addaction name="menuProfile"/>
   </widget>
   <action name="actionhuyeba">
    <property name="text">
