@@ -39,7 +39,7 @@
      <string notr="true">background-color:white;</string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="page_1">
      <widget class="QGroupBox" name="groupBox_login">
@@ -912,7 +912,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QCheckBox" name="checkBox_watched">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -925,7 +925,7 @@
        <string>Watched</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_2">
+     <widget class="QCheckBox" name="checkBox_watchlist">
       <property name="geometry">
        <rect>
         <x>160</x>
@@ -938,17 +938,30 @@
        <string>Watchlist</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_3">
+     <widget class="QCheckBox" name="checkBox_like">
       <property name="geometry">
        <rect>
-        <x>310</x>
-        <y>360</y>
+        <x>320</x>
+        <y>350</y>
         <width>91</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
        <string>Like</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_dislike">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>390</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Dislike</string>
       </property>
      </widget>
     </widget>

@@ -84,10 +84,19 @@ void QTInterface::on_checkBox_female_stateChanged(int arg) {
     if (arg != 0)
         ui.checkBox_male->setChecked(0);
 }
+void QTInterface::on_checkBox_like_stateChanged(int arg) {
+    if (arg != 0)
+        ui.checkBox_dislike->setChecked(0);
+}
+void QTInterface::on_checkBox_dislike_stateChanged(int arg) {
+    if (arg != 0)
+        ui.checkBox_like->setChecked(0);
+}
 void QTInterface::logInPage() {
     ui.stackedWidget->setCurrentIndex(0);
     ui.menuBar->hide();
 }
+
 void QTInterface::on_pushButton_change_username_clicked() {
     std::string username = ui.lineEdit_username_account->text().toStdString();
     //check if username is in database and change it

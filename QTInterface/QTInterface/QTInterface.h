@@ -16,6 +16,8 @@ private slots:
     void on_pushButton_signUp_clicked();
     void on_checkBox_male_stateChanged(int arg);
     void on_checkBox_female_stateChanged(int arg);
+    void on_checkBox_like_stateChanged(int arg);
+    void on_checkBox_dislike_stateChanged(int arg);
     void on_pushButton_back_clicked();
     void logInPage();
     void accountPage();
