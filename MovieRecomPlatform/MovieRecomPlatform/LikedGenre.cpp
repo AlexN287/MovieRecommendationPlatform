@@ -14,6 +14,11 @@ const std::unique_ptr<int>& LikedGenre::GetUserID() const
 	return m_userID;
 }
 
+int LikedGenre::GetUserIDValue() const
+{
+	return *m_userID;
+}
+
 std::string LikedGenre::GetGenre() const
 {
 	return m_genre;

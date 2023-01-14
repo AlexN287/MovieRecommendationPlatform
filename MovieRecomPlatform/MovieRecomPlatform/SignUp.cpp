@@ -9,8 +9,9 @@ SignUp::SignUp() {
 		if (u.GetUsername() == user.GetUsername())
 			newUserPreferences(u.GetUserId());
 
-	Application a(5);
-	a.RecommendInitialMovies(user);
+	//int n = user.GetUserId();
+	//Application a('a');
+	//a.RecommendInitialMovies(user);
 }
 
 User SignUp::createUser() {

@@ -18,6 +18,19 @@ Database* Database::GetInstance()
 	return instance;
 }
 
+ Movies Database::SelectMovieById(const int& movieId)
+{
+	/*using namespace sqlite_orm;
+	namespace sql = sqlite_orm;
+	return instance->m_storage->get_all<Movies>(where(c(&Movies::GetMoviesID) == movieId));*/
+
+	auto movies = instance->GetElements<Movies>();
+
+	for (int i = 0; i < movies.size(); i++)
+		if (movies[i].GetMoviesID() == movieId)
+			return movies[i];
+}
+
 std::vector<std::string> split(const std::string& s)
 {
 	std::vector<std::string> splitted;

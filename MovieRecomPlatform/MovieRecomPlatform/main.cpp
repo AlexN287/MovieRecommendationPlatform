@@ -7,6 +7,10 @@
 int main()
 {
 
+	//Database::GetInstance()->PopulateMovies("netflix_titles.csv");
+	//Database::GetInstance()->PopulateGenres();
+	
+
 	/*User user("Name1", "Password1", "10.10.2010", "Female");
 
 	Database::GetInstance()->InsertElement(user);*/
@@ -44,6 +48,8 @@ int main()
 
 	Login firstLog(username, password);*/
 	//SignUp();
+
+	//Application a(5);
 	
 
 	/*Movies movie("Movie", "Stalin", "Adolf", 1933, "Deutschland", 5, 120);
@@ -71,7 +77,7 @@ int main()
 
 	//Login firstLog(username, password);
 
-	SignUp();
+	//SignUp();
 	//Database::GetInstance()->PopulateMovies("netflix_titles.csv");
 	//Application a;
 	//a.RecommendMovies();

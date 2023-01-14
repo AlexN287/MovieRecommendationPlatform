@@ -20,7 +20,8 @@ class Application
 public:
 	Application();
 	Application(int dummy);
-	void SearchMovie(std::string movieName);
+	Application(char dummy);
+	std::vector<Movies> SearchMovie(std::string movieName);
 	void ShowMovie(std::string movieName); //TODO
 	void AddToWishList(const User& user, const Movies& movie);
 	void AddToWatchedList(const User& user, const Movies& movie);
