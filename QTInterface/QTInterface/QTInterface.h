@@ -19,17 +19,26 @@ private slots:
     void on_checkBox_like_stateChanged(int arg);
     void on_checkBox_dislike_stateChanged(int arg);
     void on_pushButton_back_clicked();
-    void logInPage();
-    void accountPage();
     void on_pushButton_change_username_clicked();
     void on_pushButton_change_password_clicked();
     void on_pushButton_delete_account_clicked();
+    void on_pushButton_continue_clicked();
+    void on_pushButton_signUp_done_clicked();
+    void on_pushButton_remove_watchlist_clicked();
+    void on_pushButton_movie_page_clicked();
+    void on_pushButton_moviePage_history_clicked();
+    void on_pushButton_liked_remove_clicked();
+    void on_pushButton_liked_moviePage_clicked();
     void createMenuBar();
     void homePage();
-    void moviesPage();
-    void showsPage();
     void watchlistPage();
+    void logInPage();
+    void accountPage();
+    void historyPage();
+    void likedPage();
 private:
     Ui::QTInterfaceClass ui;
+    //void populateGenreList();
+    //void populateWatchlistList();
 };
 
