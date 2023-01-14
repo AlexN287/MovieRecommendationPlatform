@@ -21,6 +21,12 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="BackEnd Headers">
+      <UniqueIdentifier>{80b4ffc1-f865-4e91-bf72-23a753c519be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BackEnd Source Files">
+      <UniqueIdentifier>{41fff376-983a-4114-be10-e349e8680a76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="QTInterface.qrc">
@@ -40,5 +46,113 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Database.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Genres.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LikedActors.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LikedGenre.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Login.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MovieActor.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MovieGenre.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Movies.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recommandation.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SignUp.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserRating.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WatchedList.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Wishlist.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Database.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Genres.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LikedActors.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LikedGenre.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Login.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MovieActor.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MovieGenre.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Movies.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Recommandation.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SignUp.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="UserRating.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WatchedList.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Wishlist.h">
+      <Filter>BackEnd Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="netflix_titles.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="movie.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

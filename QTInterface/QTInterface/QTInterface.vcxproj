@@ -85,11 +85,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Recommandation.cpp" />
+    <ClCompile Include="SignUp.cpp" />
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserRating.cpp" />
+    <ClCompile Include="WatchedList.cpp" />
+    <ClCompile Include="Wishlist.cpp" />
     <QtRcc Include="QTInterface.qrc" />
     <QtUic Include="QTInterface.ui" />
     <QtMoc Include="QTInterface.h" />
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Database.cpp" />
+    <ClCompile Include="Genres.cpp" />
+    <ClCompile Include="LikedActors.cpp" />
+    <ClCompile Include="LikedGenre.cpp" />
+    <ClCompile Include="Login.cpp" />
+    <ClCompile Include="MovieActor.cpp" />
+    <ClCompile Include="MovieGenre.cpp" />
+    <ClCompile Include="Movies.cpp" />
     <ClCompile Include="QTInterface.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="Genres.h" />
+    <ClInclude Include="LikedActors.h" />
+    <ClInclude Include="LikedGenre.h" />
+    <ClInclude Include="Login.h" />
+    <ClInclude Include="MovieActor.h" />
+    <ClInclude Include="MovieGenre.h" />
+    <ClInclude Include="Movies.h" />
+    <ClInclude Include="Recommandation.h" />
+    <ClInclude Include="SignUp.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="UserRating.h" />
+    <ClInclude Include="WatchedList.h" />
+    <ClInclude Include="Wishlist.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="netflix_titles.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="movie.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

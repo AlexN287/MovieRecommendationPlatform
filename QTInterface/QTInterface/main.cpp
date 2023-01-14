@@ -1,5 +1,7 @@
 #include "QTInterface.h"
+#include "Database.h"
 #include <QtWidgets/QApplication>
+#include "Login.h"
 
 int main(int argc, char *argv[])
 {

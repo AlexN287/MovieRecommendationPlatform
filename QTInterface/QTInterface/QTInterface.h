@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include "User.h"
+#include "Movies.h"
 #include "ui_QTInterface.h"
 
 class QTInterface : public QMainWindow
@@ -33,11 +35,15 @@ private slots:
     void homePage();
     void watchlistPage();
     void logInPage();
+    void writeMovieToFile(const Movies& movie, std::string filename);
     void accountPage();
     void historyPage();
+    void moviePage(const Movies& movie);
     void likedPage();
+    void populateGenreList();
 private:
     Ui::QTInterfaceClass ui;
+    User currentUser;
     //void populateGenreList();
     //void populateWatchlistList();
 };
