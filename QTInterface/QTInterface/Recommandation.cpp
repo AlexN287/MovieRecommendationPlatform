@@ -41,5 +41,5 @@ void Recommandation::SetMovieID(std::unique_ptr<int> movieId)
 
 void Recommandation::SetRecommandationID(int recommandationId)
 {
-    m_recommandationId = m_recommandationId;
+    m_recommandationId = recommandationId;
 }
