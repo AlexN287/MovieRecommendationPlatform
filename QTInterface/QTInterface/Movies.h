@@ -23,7 +23,8 @@ public:
 	Movies(std::string type, std::string title, std::string director, std::string cast,
 		 std::string country, std::string dateAdded, std::string releaseYear, std::string rating, std::string duration,
 		std::string genres, std::string description);
-	Movies(const Movies& movies) = default;
+	Movies(const Movies& movies);
+	Movies& operator=(const Movies& movies);
 	bool operator==(const Movies& movie);
 	~Movies() = default;
 

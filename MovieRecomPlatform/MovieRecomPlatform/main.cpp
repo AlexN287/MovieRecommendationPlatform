@@ -9,7 +9,58 @@ int main()
 
 	//Database::GetInstance()->PopulateMovies("netflix_titles.csv");
 	//Database::GetInstance()->PopulateGenres();
-	
+
+	Application a;
+
+	std::vector<User> users = Database::GetInstance()->GetElements<User>();
+
+	std::vector<Movies> movies = Database::GetInstance()->GetElements<Movies>();
+
+	std::vector<Movies> mm = a.SearchMovie("taruto");
+
+	for (int i = 0; i < mm.size(); i++)
+	{
+		std::cout << mm[i].GetTitle() << "\n";
+	}
+
+	/*auto m = a.SelectRandomMoviesFromRecommandation(users[1]);
+
+	for (int i = 0; i < m.size(); i++)
+	{
+		std::cout << m[i].GetTitle() << "\n";
+	}*/
+
+	a.AddToWishList(users[4], movies[3]);
+	/*std::vector<Recommandation> r = Database::GetInstance()->SelectUserRecommandation(users[4].GetUserId());
+
+	for (int i = 0; i < r.size(); i++)
+	{
+		std::cout << *r[i].GetUserID() << " " << *r[i].GetMovieID() << "\n";
+	}*/
+
+
+
+	//a.RemoveFromWishlist(users[4], movies[0]);
+
+	/*for (int i = 0; i < users.size(); i++)
+		std::cout << users[i].GetUsername() << "\n";*/
+
+
+	/*std::vector<Movies> movies = a.SelectRandomMoviesFromRecommandation(users[1]);
+
+	for (int i = 0; i < movies.size(); i++)
+		std::cout << movies[i].GetTitle() << "\n";*/
+
+	 //a.RecommendInitialMovies(users[2]);
+
+	 /*std::vector<Recommandation> r = Database::GetInstance()->SelectUserRecommandation(users[0]);
+
+
+	 for (int i = 0; i < r.size(); i++)
+	 {
+
+	 }
+	*/
 
 	/*User user("Name1", "Password1", "10.10.2010", "Female");
 

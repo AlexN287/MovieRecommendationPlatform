@@ -12,6 +12,7 @@ public:
 	UserRating() = default;
 	UserRating(std::unique_ptr <int> userId, std::unique_ptr <int> movieId, int rating);
 	UserRating(const UserRating& userRating);
+	UserRating& operator=(const UserRating& userRating);
 	~UserRating() = default;
 	const std::unique_ptr <int>& GetUserId() const;
 	const std::unique_ptr <int>& GetMovieId() const;

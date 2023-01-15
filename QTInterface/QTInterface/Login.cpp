@@ -39,23 +39,6 @@ std::string Login::GetPassword() const
 	return m_password;
 }
 
-std::string Login::LoginStatusToString(Login::LoginStatus loginStatus)
-{
-    switch (loginStatus)
-    {
-    case Login::LoginStatus::Successful:
-        return "Successful \n";
-        break;
-    case Login::LoginStatus::NotRegistered:
-        return "Not registered \n";
-        break;
-    case Login::LoginStatus::WrongPassword:
-        return "Wrong password \n";
-        break;
-    default:
-        return "Authentification error \n";
-    }
-}
 
 bool Login::checkUser(const User& user)
 {
@@ -103,11 +86,10 @@ void Login::updateUserPassword(User& user, const std::string& password)
 
 void Login::deleteUser(User& user)
 {
-    //Database::GetInstance()->RemoveElement<Wishlist>(user.GetUserId());
-    //Database::GetInstance()->RemoveElement<WatchedList>(user.GetUserId());
-    //Database::GetInstance()->RemoveElement<UserRating>(user.GetUserId());
-    //Database::GetInstance()->RemoveElement<LikedGenre>(user.GetUserId());
-    //Database::GetInstance()->RemoveElement<LikedActors>(user.GetUserId());
-    //Database::GetInstance()->RemoveElement<Recommandation>(user.GetUserId());
-    //Database::GetInstance()->RemoveElement<User>(user.GetUserId());
+    user.SetUsername("");
+    user.SetPassword("User deleted");
+    user.SetBirthdate("");
+    user.SetGender("");
+
+    Database::GetInstance()->UpdateElement(user);
 }

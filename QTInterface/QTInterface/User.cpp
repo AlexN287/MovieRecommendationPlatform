@@ -5,7 +5,7 @@ User::User(const std::string& username, const std::string& password, const std::
 	m_password{ password },
 	m_birthdate{ birthdate },
 	m_gender{ gender },
-	m_userId{ 0 } //TODO
+	m_userId{ 0 } 
 {
 	
 }

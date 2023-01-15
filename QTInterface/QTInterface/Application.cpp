@@ -6,127 +6,8 @@
 #include <vector>
 #include<random>
 
-Application::Application(char dummy)
-{
-
-}
-Application::Application(int dummy)
-{
-    std::string username, password;
-    std::cout << "Username: ";
-    std::cin >> username;
-    std::cout << "Password: ";
-    std::cin >> password;
-
-    bool exitCondition = false;
-    Login login(username, password);
-    User user = login.getUser();
-
-    while (!login.checkUser(user))
-    {
-        std::cout << "Try again. \n";
-        std::cout << "Username: ";
-        std::cin >> username;
-        std::cout << "Password: ";
-        std::cin >> password;
-        login = Login(username, password);
-        user = login.getUser();
-    }
-
-    auto movies = Database::GetInstance()->GetElements<Movies>();
-
-    for (int i = 34; i < 36; i++)
-        AddToWatchedList(user, movies[i]);
-
-    ///*std::string movieName;
-    //std::cout << "Enter movie name: " << "\n";
-    //std::cin >> movieName;
-
-    //std::vector<Movies> found = SearchMovie(movieName);
-
-    //for (int i = 0; i < found.size(); i++)
-    //    std::cout << i << ". " << found[i].GetTitle() << "\n";
-
-    //int option;
-    //std::cout << "Select movie " << "\n";
-    //std::cin >> option;
-
-    //Movies movie = found[option];
-
-    //AddToWishList(user, movie);
-    //AddToWatchedList(user, movie);
-
-    //GiveRating(user, movie);*/
-
-    //auto movies = SelectRandomMoviesFromRecommandation(user);
-
-    //for (int i = 0; i < movies.size(); i++)
-    //    std::cout << movies[i].GetTitle() << "\n";
-}
-
 Application::Application()
 {
-    std::string username, password;
-    std::cout << "Username: ";
-    std::cin >> username;
-    std::cout << "Password: ";
-    std::cin >> password;
-
-    bool exitCondition = false;
-    Login login(username, password);
-    User user = login.getUser();
-
-    while (!login.checkUser(user))
-    {
-        std::cout << "Try again. \n";
-        std::cout << "Username: ";
-        std::cin >> username;
-        std::cout << "Password: ";
-        std::cin >> password;
-        login = Login(username, password);
-        user = login.getUser();
-    }
-
-    std::cout << "0 - Exit \n";
-    std::cout << "1 - Show User \n";
-    std::cout << "2 - Add movie to whishlist \n";
-    std::cout << "3 - Add movie to watchedlist \n";
-    std::cout << "4 - Give rating \n";
-
-    int condition;
-    while (!exitCondition)
-    {
-        std::cin >> condition;
-        switch (condition)
-        {
-        case 0:
-            exitCondition = true;
-            break;
-
-        case 1:
-            break;
-
-        case 2:
-        {
-            Movies movie = SelectMovie();
-            AddToWishList(user, movie);
-            break;
-        }
-        case 3:
-        {
-            Movies movie = SelectMovie();
-            AddToWatchedList(user, movie);
-            break;
-        }
-        case 4:
-        {
-            Movies movie = SelectMovie();
-            GiveRating(user, movie);
-            break;
-        }
-
-        }
-    }
 }
 
 Movies Application::SelectMovie()
@@ -135,7 +16,7 @@ Movies Application::SelectMovie()
     return movies[0];
 }
 
-void SelectRandomMovies(std::vector<Movies>& randomMoviesList)
+void Application::SelectRandomMovies(std::vector<Movies>& randomMoviesList, int number)
 {
     const int moviesNumber = 8202;
     std::random_device rd;
@@ -143,12 +24,19 @@ void SelectRandomMovies(std::vector<Movies>& randomMoviesList)
     std::uniform_int_distribution<> distr(1, moviesNumber);
   
     auto moviesList = Database::GetInstance()->GetElements<Movies>();
+
+    int count = 1;
     
-    while (randomMoviesList.size() <= 10)
+    while (count <= number)
     {
         int index = distr(eng);
-        if (std::find(randomMoviesList.begin(), randomMoviesList.end(), moviesList[index]) == randomMoviesList.end()) 
+        if (std::find(randomMoviesList.begin(), randomMoviesList.end(), moviesList[index]) == randomMoviesList.end())
+        {
             randomMoviesList.push_back(moviesList[index]);
+            count++;
+
+        }
+            
     }
 
 }
@@ -160,10 +48,9 @@ std::vector<Movies> Application::SelectRandomMoviesFromRecommandation(const User
    
     std::random_device rd;
     std::mt19937 eng(rd());
-    std::uniform_int_distribution<> distr(1, recommendedMovies.size());
+    std::uniform_int_distribution<> distr(1, recommendedMovies.size() - 1);
 
-
-    while (selectedMovies.size() <= 10)
+    while (selectedMovies.size() < 6)
     {
         int index = distr(eng);
         Recommandation recommendation(recommendedMovies[index]);
@@ -204,12 +91,12 @@ void FindSimilarMovie(const Movies& movie, std::vector<Movies>& recommendMovies)
 
 
     int count = 0;
-    while (count <= 10) {
+    while (count <= 6) {
 
         int index = distr(eng);
         for (int j = 0; j < movieGenres.size() && count <= 10; j++)
         {
-            if (moviesList[index].GetGenres().find(movieGenres[j]))
+            if (moviesList[index].GetGenres().find(movieGenres[j]) != std::string::npos)
             {
                 if (std::find(recommendMovies.begin(), recommendMovies.end(), moviesList[index]) == recommendMovies.end())
                 {
@@ -232,12 +119,12 @@ void FindMovieGenre(const std::vector<Genres>& genres, std::vector<Movies>& reco
     std::uniform_int_distribution<> distr(1, moviesNumber);
 
     int count = 0;
-    while (count <= 10) 
+    while (count < 10) 
     {
         int index = distr(eng);
         for (int j = 0; j < genres.size() && count <= 10; j++)
         {
-            if (moviesList[index].GetGenres().find(genres[j].GetName()))
+            if (moviesList[index].GetGenres().find(genres[j].GetName()) != std::string::npos)
             {
                 if (std::find(recommendMovies.begin(), recommendMovies.end(), moviesList[index]) == recommendMovies.end())
                 {
@@ -270,7 +157,7 @@ void Application::RecommendInitialMovies(const User& user)
     auto userGenres = GetUserGenres(user);
    
     FindMovieGenre(userGenres, recommendMovies);
-    SelectRandomMovies(recommendMovies);
+    SelectRandomMovies(recommendMovies, 10);
 
     auto currentRecommandation = Database::GetInstance()->SelectUserRecommandation(user.GetUserId());
     std::vector<Movies> currentMovies;
@@ -501,90 +388,6 @@ std::vector<Movies> Application::SearchMovie(std::string movieName)
      return foundMovies;
 }
 
-//void Application::ShowMovie(std::string movieName)
-//{
-//    using movies = decltype(SearchMovie(""));
-//
-//    movies foundMovies = SearchMovie(movieName); //TODO
-//
-//    int movieOption;
-//    if (!foundMovies.empty())
-//    {
-//        std::cout << "Select movie: \n";
-//
-//        for (int i = 0; i < foundMovies.size(); i++)
-//        {
-//            std::cout << i + 1 << ". " << std::get<0>(foundMovies[i]) << " " << std::get<3>(foundMovies[i]) << "\n";
-//        }
-//
-//        std::cout << "Enter: \n";
-//   
-//        std::cin >> movieOption;
-//
-//        movieOption--;
-//
-//        std::cout << "0 - Exit \n";
-//        std::cout << "1 - Show type \n";
-//        std::cout << "2 - Show director \n";
-//        std::cout << "3 - Show release year \n";
-//        std::cout << "4 - Show country \n";
-//        std::cout << "5 - Show rating \n";
-//        std::cout << "6 - Show duration \n";
-//
-//        auto movie = foundMovies[movieOption];
-//
-//        int option;
-//        std::cin >> option;
-//
-//        while (option != 0) {
-//
-//            switch (option)
-//            {
-//
-//            case 1:
-//                std::cout << std::get<1>(movie) << "\n";
-//                break;
-//            case 2:
-//                std::cout << std::get<2>(movie) << "\n";
-//                break;
-//            case 3:
-//                std::cout << std::get<3>(movie) << "\n";
-//                break;
-//            case 4:
-//                std::cout << std::get<4>(movie) << "\n";
-//                break;
-//            case 5:
-//                std::cout << std::get<5>(movie) << "\n";
-//                break;
-//            case 6:
-//                std::cout << std::get<6>(movie) << "\n";
-//                break;
-//            }
-//
-//            std::cin >> option;
-//
-//        }
-//
-//
-//  
-//    }
-//}
-
-std::string Application::SearchStatusToString(Application::SearchStatus searchStatus)
-{
-    switch (searchStatus)
-    {
-    case Application::SearchStatus::Found :
-        return "Found \n";
-        break;
-    case Application::SearchStatus::NotFound: 
-        return "Not found \n";
-        break;
-    default:
-        return "Error";
-        break;
-    }
-}
 
 void Application::AddToWishList(const User& user, const Movies& movie)
 {
@@ -635,16 +438,18 @@ void Application::AddToWatchedList(const User& user, const Movies& movie)
     }
 }
 
-void Application::GiveRating(const User& user, const Movies& movie)
+void Application::GiveRating(const User& user, const Movies& movie, int rating)
 {
     auto userRating = Database::GetInstance()->SelectUserRating(user.GetUserId());
     int found = false;
+    UserRating currentRating;
 
     for (int i = 0; i < userRating.size(); i++)
     {
         if (*userRating[i].GetMovieId() == movie.GetMoviesID())
         {
             found = true;
+            currentRating = userRating[i];
             break;
         }
     }
@@ -653,9 +458,6 @@ void Application::GiveRating(const User& user, const Movies& movie)
     {
         std::unique_ptr<int> userIdPtr = std::make_unique<int>(user.GetUserId());
         std::unique_ptr<int> movieIdPtr = std::make_unique<int>(movie.GetMoviesID());
-        std::cout << "0/1" << "\n";
-        int rating;
-        std::cin >> rating;
         Database::GetInstance()->InsertElement(UserRating(std::move(userIdPtr), std::move(movieIdPtr), rating));
 
         if (rating == 1)
@@ -666,5 +468,53 @@ void Application::GiveRating(const User& user, const Movies& movie)
             DeleteRecommendedMoviesByGenre(movieGenres, user);
         }
     }
+    else
+    {
+        currentRating.SetRating(rating);
+
+        Database::GetInstance()->UpdateElement(currentRating);
+    }
         
+}
+
+void Application::RemoveFromWishlist(const User& user, const Movies& movie)
+{
+    auto userWishlist = Database::GetInstance()->SelectUserWishList(user.GetUserId());
+
+    for (int i = 0; i < userWishlist.size(); i++)
+    {
+        if (*userWishlist[i].GetMoviesID() == movie.GetMoviesID())
+        {
+            Database::GetInstance()->RemoveElement<Wishlist>(userWishlist[i].GetWishlistID());
+            break;
+        }
+    }
+}
+
+void Application::RemoveFromWatchedlist(const User& user, const Movies& movie)
+{
+    auto userWatchedlist = Database::GetInstance()->SelectUserWatchedList(user.GetUserId());
+
+    for (int i = 0; i < userWatchedlist.size(); i++)
+    {
+        if (*userWatchedlist[i].GetMoviesID() == movie.GetMoviesID())
+        {
+            Database::GetInstance()->RemoveElement<Wishlist>(userWatchedlist[i].GetWatchedListId());
+            break;
+        }
+    }
+}
+
+void Application::RemoveRating(const User& user, const Movies& movie)
+{
+    auto userRating = Database::GetInstance()->SelectUserRating(user.GetUserId());
+
+    for (int i = 0; i < userRating.size(); i++)
+    {
+        if (*userRating[i].GetMovieId() == movie.GetMoviesID())
+        {
+            Database::GetInstance()->RemoveElement<Wishlist>(userRating[i].GetUserRatingId());
+            break;
+        }
+    }
 }

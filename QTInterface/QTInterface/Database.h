@@ -4,14 +4,10 @@
 #include "Genres.h"
 #include "Movies.h"
 #include "Wishlist.h"
-#include "Actor.h"
-#include "MovieActor.h"
 #include "UserRating.h"
 #include "WatchedList.h"
 #include "LikedGenre.h"
-#include "MovieGenre.h"
 #include "User.h"
-#include "LikedActors.h"
 #include "Recommandation.h"
 #include <memory>
 #include<fstream>
@@ -49,18 +45,8 @@ inline auto CreateDatabase()
 			make_column("wishlistId", &Wishlist::SetWishlistID, &Wishlist::GetWishlistID, autoincrement(), primary_key()),
 			make_column("userId", &Wishlist::GetUserID, &Wishlist::SetUserID),
 			make_column("moviesId", &Wishlist::GetMoviesID, &Wishlist::SetMoviesID),
-			//primary_key(&Wishlist::GetUserID, &Wishlist::SetUserID, &Wishlist::GetMoviesID, &Wishlist::SetMoviesID),
 			foreign_key(&Wishlist::SetUserID).references(&User::GetUserId),
 			foreign_key(&Wishlist::SetMoviesID).references(&Movies::GetMoviesID)),
-		make_table("Actors",
-			make_column("actorId", &Actor::SetActorId, &Actor::GetActorId, primary_key()),
-			make_column("fullName", &Actor::SetFullName, &Actor::GetFullName)),
-		make_table("MovieActor",
-			make_column("actorId", &MovieActor::SetActorId, &MovieActor::GetActorId),
-			make_column("movieId", &MovieActor::SetMoviesId, &MovieActor::GetMoviesId),
-			foreign_key(&MovieActor::SetActorId).references(&Actor::GetActorId),
-			foreign_key(&MovieActor::SetMoviesId).references(&Movies::GetMoviesID),
-			primary_key(&MovieActor::SetActorId, &MovieActor::GetActorId, &MovieActor::SetMoviesId, &MovieActor::GetMoviesId)),
 		make_table("UserRating",
 			make_column("userRatingId", &UserRating::SetUserRatingId, &UserRating::GetUserRatingId, autoincrement(), primary_key()),
 			make_column("userId", &UserRating::SetUserId, &UserRating::GetUserId),
@@ -68,33 +54,21 @@ inline auto CreateDatabase()
 			make_column("rating", &UserRating::SetRating, &UserRating::GetRating),
 			foreign_key(&UserRating::SetUserId).references(&User::GetUserId),
 			foreign_key(&UserRating::SetMovieId).references(&Movies::GetMoviesID)),
-			//primary_key(&UserRating::SetUserId, &UserRating::GetUserId, &UserRating::SetMovieId, &UserRating::GetMovieId)),
 		make_table("WatchedList",
 			make_column("watchedListId", &WatchedList::SetWatchedListId, &WatchedList::GetWatchedListId, autoincrement(), primary_key()),
 			make_column("userId", &WatchedList::GetUserID, &WatchedList::SetUserID),
 			make_column("moviesId", &WatchedList::GetMoviesID, &WatchedList::SetMoviesID),
-			//primary_key(&WatchedList::GetUserID, &WatchedList::SetUserID, &WatchedList::GetMoviesID, &WatchedList::SetMoviesID),
 			foreign_key(&WatchedList::SetUserID).references(&User::GetUserId),
 			foreign_key(&WatchedList::SetMoviesID).references(&Movies::GetMoviesID)),
 		make_table("LikedGenre",
+			make_column("likedGenreId", &LikedGenre::SetLikedGenreID, &LikedGenre::GetLikedGenreID, autoincrement(), primary_key()),
 			make_column("userId", &LikedGenre::GetUserID, &LikedGenre::SetUserID),
 			make_column("genre", &LikedGenre::GetGenre, &LikedGenre::SetGenre),
 			foreign_key(&LikedGenre::SetUserID).references(&User::GetUserId)),
-		make_table("MovieGenre",
-			make_column("genreId", &MovieGenre::GetGenreId, &MovieGenre::SetGenreId),
-			make_column("moviesId", &MovieGenre::GetMoviesId, &MovieGenre::SetMoviesId),
-			primary_key(&MovieGenre::GetGenreId, &MovieGenre::SetGenreId, &MovieGenre::GetMoviesId, &MovieGenre::SetMoviesId),
-			foreign_key(&MovieGenre::SetGenreId).references(&Genres::GetGenreId),
-			foreign_key(&MovieGenre::SetMoviesId).references(&Movies::GetMoviesID)),
-		make_table("LikedActors",
-			make_column("userId", &LikedActors::GetUserId, &LikedActors::SetUserId),
-			make_column("actor", &LikedActors::GetActor, &LikedActors::SetActor),
-			foreign_key(&LikedActors::SetUserId).references(&User::GetUserId)),
 		make_table("Recommandation",
 			make_column("recommandationId", &Recommandation::SetRecommandationID, &Recommandation::GetRecommandationID, autoincrement(), primary_key()),
 			make_column("userId", &Recommandation::GetUserID, &Recommandation::SetUserID),
 			make_column("movieId", &Recommandation::GetMovieID, &Recommandation::SetMovieID),
-			//primary_key(&Recommandation::GetUserID, &Recommandation::GetUserID, &Recommandation::GetMovieID, &Recommandation::GetMovieID),
 			foreign_key(&Recommandation::SetUserID).references(&User::GetUserId),
 			foreign_key(&Recommandation::SetMovieID).references(&Movies::GetMoviesID))
 	);
@@ -108,10 +82,7 @@ class Database
 	void SyncSchema();
 	static Database* instance;
 public:
-	/*const std::unique_ptr<Storage>& getStorage() {
-		return m_storage;
-	}*/
-
+	
 	Database(Database&) = delete;
 	void operator=(const Database&) = delete;
 	static Database* GetInstance();
@@ -175,20 +146,11 @@ public:
 		namespace sql = sqlite_orm;
 		return instance->m_storage->get_all<LikedGenre>(where(c(&LikedGenre::GetUserID) == userId));
 
-		/*auto list = instance->GetElements<LikedGenre>();
-		std::vector<LikedGenre> list2;
-
-		for (int i = 0; i < list.size(); i++)
-		{
-			int id = *list[i].GetUserID();
-			if (id == userId)
-				list2.push_back(list[i]);
-		}
-
-		return list2;*/
 	}
 
 	Movies SelectMovieById(const int& movieId);
+
+	Movies SelectMovieByName(const std::string& movieName);
 	
 	static auto SelectUserRecommandation(const int& userId)
 	{

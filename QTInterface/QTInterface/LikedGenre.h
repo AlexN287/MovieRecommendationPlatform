@@ -7,6 +7,7 @@ class LikedGenre
 private:
 	std::unique_ptr<int> m_userID;
 	std::string m_genre;
+	int m_likedGenreID;
 
 public:
 	LikedGenre() = default;
@@ -16,8 +17,10 @@ public:
 
 	const std::unique_ptr<int>& GetUserID() const;
 	int GetUserIDValue() const;
+	int GetLikedGenreID() const;
 	std::string GetGenre() const;
 	void SetUserID(std::unique_ptr<int> userID);
 	void SetGenre(std::string genre);
+	void SetLikedGenreID(int likedGenreID);
 };
 

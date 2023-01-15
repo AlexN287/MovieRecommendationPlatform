@@ -5,7 +5,8 @@ LikedGenre::LikedGenre(std::unique_ptr<int> userId, std::string genre) :
 
 LikedGenre::LikedGenre(const LikedGenre& likedGenre) :
 	m_userID(std::make_unique<int>(*likedGenre.m_userID)),
-	m_genre(likedGenre.m_genre)
+	m_genre(likedGenre.m_genre),
+	m_likedGenreID{0}
 {
 }
 
@@ -17,6 +18,11 @@ const std::unique_ptr<int>& LikedGenre::GetUserID() const
 int LikedGenre::GetUserIDValue() const
 {
 	return *m_userID;
+}
+
+int LikedGenre::GetLikedGenreID() const
+{
+	return m_likedGenreID;
 }
 
 std::string LikedGenre::GetGenre() const
@@ -32,4 +38,9 @@ void LikedGenre::SetUserID(std::unique_ptr<int> userID)
 void LikedGenre::SetGenre(std::string genre)
 {
 	this->m_genre = genre;
+}
+
+void LikedGenre::SetLikedGenreID(int likedGenreID)
+{
+	m_likedGenreID = likedGenreID;
 }

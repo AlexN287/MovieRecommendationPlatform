@@ -2,19 +2,10 @@
 #include <iostream>
 #include "User.h"
 #include "LikedGenre.h"
-#include "LikedActors.h"
 #include "Application.h"
 
 class SignUp
 {
-	enum class SignUpStatus
-	{
-		Successful,
-		ExistentUser,
-		SpecialCharacters,
-		InvalidDate,
-		Error
-	};
 
 	User currentUser;
 public:
@@ -23,7 +14,6 @@ public:
 	static bool existentUsername(const std::string& username);
 	static bool hasSpecialCharacters(const std::string& username);
 	void addUserInDatabase(const User& user);
-	std::string SignUpStatusToString(SignUp::SignUpStatus status);
 	User getCurrentUser();
 	static void newUserPreferences(const User& user, const std::vector<std::string>& genres);
 };

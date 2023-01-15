@@ -3,12 +3,6 @@
 #include "Database.h"
 class Login
 {
-	enum class LoginStatus
-	{
-		Successful,
-		NotRegistered,
-		WrongPassword
-	};
 
 private:
 	std::string m_username;
@@ -23,7 +17,6 @@ public:
 	std::string GetUsername() const;
 	void SetPassword(const std::string& password);
 	std::string GetPassword() const;
-	std::string LoginStatusToString(Login::LoginStatus loginStatus);
 	bool checkUser(const User& user);
 	User getUser();
 	static void updateUserUsername(User& user, const std::string& username);

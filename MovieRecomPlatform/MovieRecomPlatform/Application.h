@@ -25,6 +25,9 @@ public:
 	void ShowMovie(std::string movieName); //TODO
 	void AddToWishList(const User& user, const Movies& movie);
 	void AddToWatchedList(const User& user, const Movies& movie);
+	void RemoveFromWatchedlist(const User& user, const Movies& movie);
+	void RemoveFromWishlist(const User& user, const Movies& movie);
+	void RemoveRating(const User& user, const Movies& movie);
 	void GiveRating(const User& user,const Movies& movie);
 	Movies SelectMovie();
 	void RecommendInitialMovies(const User& user);

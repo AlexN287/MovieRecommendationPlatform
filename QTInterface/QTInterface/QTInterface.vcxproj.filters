@@ -46,9 +46,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>BackEnd Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>BackEnd Source Files</Filter>
     </ClCompile>
@@ -58,22 +55,10 @@
     <ClCompile Include="Genres.cpp">
       <Filter>BackEnd Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LikedActors.cpp">
-      <Filter>BackEnd Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LikedGenre.cpp">
       <Filter>BackEnd Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Login.cpp">
-      <Filter>BackEnd Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MovieActor.cpp">
-      <Filter>BackEnd Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MovieGenre.cpp">
-      <Filter>BackEnd Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Movies.cpp">
       <Filter>BackEnd Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Recommandation.cpp">
@@ -94,11 +79,11 @@
     <ClCompile Include="Wishlist.cpp">
       <Filter>BackEnd Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Movies.cpp">
+      <Filter>BackEnd Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h">
-      <Filter>BackEnd Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Application.h">
       <Filter>BackEnd Headers</Filter>
     </ClInclude>
@@ -108,19 +93,10 @@
     <ClInclude Include="Genres.h">
       <Filter>BackEnd Headers</Filter>
     </ClInclude>
-    <ClInclude Include="LikedActors.h">
-      <Filter>BackEnd Headers</Filter>
-    </ClInclude>
     <ClInclude Include="LikedGenre.h">
       <Filter>BackEnd Headers</Filter>
     </ClInclude>
     <ClInclude Include="Login.h">
-      <Filter>BackEnd Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="MovieActor.h">
-      <Filter>BackEnd Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="MovieGenre.h">
       <Filter>BackEnd Headers</Filter>
     </ClInclude>
     <ClInclude Include="Movies.h">

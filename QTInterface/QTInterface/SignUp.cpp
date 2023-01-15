@@ -64,23 +64,6 @@ void SignUp::newUserPreferences(const User& user, const std::vector<std::string>
 
 }
 
-std::string SignUp::SignUpStatusToString(SignUp::SignUpStatus status) {
-	switch (status)
-	{
-	case SignUp::SignUpStatus::Successful:
-		return "Successful\n";
-	case SignUp::SignUpStatus::ExistentUser:
-		return "The username is already used\n";
-	case SignUp::SignUpStatus::SpecialCharacters:
-		return "It can not contain special characters\n";
-	case SignUp::SignUpStatus::InvalidDate:
-		return "Incorrect date format\n";
-	case SignUp::SignUpStatus::Error:
-		return "Error\n";
-	default:
-		return "";
-	}
-}
 
 User SignUp::getCurrentUser()
 {
