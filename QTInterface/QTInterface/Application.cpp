@@ -157,7 +157,7 @@ void Application::RecommendInitialMovies(const User& user)
     auto userGenres = GetUserGenres(user);
    
     FindMovieGenre(userGenres, recommendMovies);
-    SelectRandomMovies(recommendMovies, 10);
+    SelectRandomMovies(recommendMovies, 15);
 
     auto currentRecommandation = Database::GetInstance()->SelectUserRecommandation(user.GetUserId());
     std::vector<Movies> currentMovies;
@@ -225,17 +225,20 @@ void Application::RecommendMoviesBasedOnInput(const Movies& movie, const User& u
 void DeleteRecommendedMoviesByGenre(const std::vector<std::string>& genresToDelete, const User& user)
 {
     auto recommendMovies = Database::GetInstance()->SelectUserRecommandation(user.GetUserId());
-    int countFiveMoviesToDelete = 0;
-    for (int i = 0; i < recommendMovies.size() || countFiveMoviesToDelete == 5; i++)
+    int count = 0;
+    for (int i = 0; i < recommendMovies.size(); i++)
     {
         std::string movieGenres = Database::GetInstance()->
             SelectMovieById(*recommendMovies[i].GetMovieID()).GetGenres();
-        for(int j=0;j<genresToDelete.size();j++)
+        for (int j = 0; j < genresToDelete.size(); j++)
             if (movieGenres.find(genresToDelete[j]) != std::string::npos)
             {
                 Database::GetInstance()->RemoveElement<Recommandation>(recommendMovies[i].GetRecommandationID());
-                countFiveMoviesToDelete++;
+                count++;
+                break;
             }
+        if (count == 3)
+            break;
     }
 }
 
@@ -486,6 +489,9 @@ void Application::RemoveFromWishlist(const User& user, const Movies& movie)
             break;
         }
     }
+
+    std::vector<std::string> movieGenres = splitChar(movie.GetGenres(), ",");
+    DeleteRecommendedMoviesByGenre(movieGenres, user);
 }
 
 void Application::RemoveFromWatchedlist(const User& user, const Movies& movie)
