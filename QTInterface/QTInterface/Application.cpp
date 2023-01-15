@@ -357,34 +357,31 @@ std::vector<Movies> Application::SearchMovie(std::string movieName)
                 
     }
     auto initial = foundMovies;
-    if(!initial.empty())
-        for (int i = 0; i < initial.size(); i++)
-        {
-            std::string foundMovie = initial[i].GetTitle();
-            toLower(foundMovie);
-            removeSpaces(foundMovie);
-            removeCharacters(foundMovie);
+    for (int i = 0; i < initial.size(); i++)
+    {
+        std::string foundMovie = initial[i].GetTitle();
+        toLower(foundMovie);
+        removeSpaces(foundMovie);
+        removeCharacters(foundMovie);
 
-            for (int j = 0; j < moviesList.size(); j++)
-            { 
-                std::string title = moviesList[j].GetTitle();
+        for (int j = 0; j < moviesList.size(); j++)
+        { 
+            std::string title = moviesList[j].GetTitle();
               
-                toLower(title);
-                removeSpaces(title);
-                removeCharacters(title);
+            toLower(title);
+            removeSpaces(title);
+            removeCharacters(title);
 
-                if (findSubString(title, foundMovie))
-                    if (hasOnlyAlphaNum(moviesList[j].GetTitle())) //TODO
-                    { 
-                      foundMovies.push_back(moviesList[j]);
-                      //std::cout << moviesList[j].GetTitle() << "\n";
-                    }
-                       
+            if (findSubString(title, foundMovie) && hasOnlyAlphaNum(moviesList[j].GetTitle()))
+            {
+                if (std::find(foundMovies.begin(), foundMovies.end(), moviesList[j]) == foundMovies.end())
+                    foundMovies.push_back(moviesList[j]);
             }
-           
+                       
         }
-    //for (int i = 0; i < foundMovies.size(); i++)
-       // std::cout << foundMovies[i].GetTitle() << '\n';
+           
+    }
+    
      return foundMovies;
 }
 
